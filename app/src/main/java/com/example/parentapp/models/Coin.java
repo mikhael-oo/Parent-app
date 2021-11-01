@@ -1,4 +1,4 @@
-package Model;
+package com.example.parentapp.models;
 
 /**
  * Coin class, represents a fair coin with head and tail
