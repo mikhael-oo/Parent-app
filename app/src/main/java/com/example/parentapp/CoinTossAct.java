@@ -21,7 +21,7 @@ public class CoinTossAct extends AppCompatActivity {
     private int counter = MAX_SPINS;
 
 
-    // yo
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
