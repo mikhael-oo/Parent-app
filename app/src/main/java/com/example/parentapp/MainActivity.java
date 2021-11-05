@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     // set up the three required buttons on the screen
     public void setupAllButtons(){
-        Button childrenEditBtn = findViewById(R.id.addChild);
+        Button childrenEditBtn = findViewById(R.id.editKid);
         childrenEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         coinFlipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           //     Intent intent = CoinFlipActivity.makeIntent(MainActivity.this);
-             //   startActivity(intent);
+//                Intent intent = CoinTossAct.makeIntent(MainActivity.this);
+//                startActivity(intent);
             }
         });
 
