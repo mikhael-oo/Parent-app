@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         timeoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   Intent intent = TimeoutActivity.makeIntent(MainActivity.this);
+             //   Intent intent = Timer.makeIntent(MainActivity.this);
                // startActivity(intent);
             }
         });
