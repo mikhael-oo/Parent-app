@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.parentapp.models.Timer;
+
 import java.util.Locale;
 
 public class timoutTimer extends AppCompatActivity {
-
+    private Timer timer = Timer.getTimerInstance();
     private static final long START_TIME_IN_MILLIS = 6000;
 
     private TextView countDowntext;
@@ -27,7 +29,7 @@ public class timoutTimer extends AppCompatActivity {
 
     private boolean isTimerRunning;
 
-    private long timeLeftInMillis = START_TIME_IN_MILLIS;
+    private long timeLeftInMillis = timer.getMinutes() * 60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

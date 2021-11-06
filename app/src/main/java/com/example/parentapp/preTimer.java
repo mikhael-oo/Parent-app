@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -41,14 +43,24 @@ public class preTimer extends AppCompatActivity {
         for (int i = 0; i < minutes.length; i++) {
             int minute = minutes[i];
             if (minute != 0) {
+
                 RadioButton button = new RadioButton(this);
                 button.setText(minute+ " MINS");
 
                 group.addView(button);
+                button.setOnClickListener(view -> {
+                    timer.setMinutes(minute);
+                });
             } else {
                 RadioButton button = new RadioButton(this);
                 button.setText("CUSTOM TIME");
                 group.addView(button);
+
+                button.setOnClickListener(view -> {
+                    EditText number = findViewById(R.id.customNumber);
+                    int num = Integer.parseInt(number.getText().toString());
+                    timer.setMinutes(num);
+                });
             }
         }
     }
