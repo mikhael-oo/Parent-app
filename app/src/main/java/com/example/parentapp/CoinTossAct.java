@@ -3,6 +3,8 @@ package com.example.parentapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -15,18 +17,20 @@ import android.widget.Toast;
 import com.example.parentapp.models.Coin;
 
 public class CoinTossAct extends AppCompatActivity {
+    private static String KID_NAME_KEY = "The kid name for the new coin toss";
+    private String kidToTossName = null;
     private static final int MAX_SPINS = 15;
     private final Coin coin = Coin.getCoinInstance();
     private boolean isTail = false;
     private int counter = MAX_SPINS;
 
 
-    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coin_toss);
 
+        extractDataFromIntent();
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
         Animation extraRotate = AnimationUtils.loadAnimation(this,R.anim.rotate_extra);
         ImageView coinImg = findViewById(R.id.coin_img);
@@ -35,6 +39,18 @@ public class CoinTossAct extends AppCompatActivity {
         setupTossBtn(coinImg, rotate, extraRotate);
     }
 
+
+
+    private void extractDataFromIntent() {
+
+        Intent intent = getIntent();
+        String name = intent.getStringExtra(KID_NAME_KEY);
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+
+        // Here validate if the kid name is not in the list of kids
+
+        kidToTossName = name;
+    }
 
 
     @Override
@@ -140,4 +156,12 @@ public class CoinTossAct extends AppCompatActivity {
             coinImg.setImageResource(R.drawable.loonie_head);
         }
     }
+
+
+    public static Intent makeIntent(Context context, String kidName)   {
+        Intent intent = new Intent(context, CoinTossAct.class);
+        intent.putExtra(KID_NAME_KEY, kidName);
+        return intent;
+    }
+
 }
