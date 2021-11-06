@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParentApp">
         <activity
-            android:name=".Timer"
+            android:name=".preTimer"
+            android:exported="false" />
+        <activity
+            android:name=".timoutTimer"
             android:exported="false"
-            android:label="Timer"/>
+            android:label="Timer" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

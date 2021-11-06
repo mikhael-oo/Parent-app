@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-public class Timer extends AppCompatActivity {
+public class timoutTimer extends AppCompatActivity {
 
     private static final long START_TIME_IN_MILLIS = 6000;
 

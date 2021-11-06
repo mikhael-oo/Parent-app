@@ -6,4 +6,7 @@
     <string name="pauseText">PAUSE</string>
     <string name="resetText">RESET</string>
 
+    <string name="choosingText">CHOOSE THE TIMEOUT PERIOD</string>
+    <string name="toTimer">GO TO TIMER</string>
+    <string name="custom">Custom Timer(minutes):</string>
 </resources>
