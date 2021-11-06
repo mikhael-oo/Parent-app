@@ -3,6 +3,7 @@ package com.example.parentapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +20,8 @@ import java.util.Locale;
 
 public class timoutTimer extends AppCompatActivity {
     private Timer timer = Timer.getTimerInstance();
-    private static final long START_TIME_IN_MILLIS = 6000;
+    private final long START_TIME = timer.getMinutes() * 60000;
+    //private static final long START_TIME_IN_MILLIS = 60000;
 
     private TextView countDowntext;
     private Button startPauseButton;
@@ -29,7 +31,9 @@ public class timoutTimer extends AppCompatActivity {
 
     private boolean isTimerRunning;
 
-    private long timeLeftInMillis = timer.getMinutes() * 60000;
+    private long timeLeftInMillis = START_TIME;
+
+    private long endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +57,18 @@ public class timoutTimer extends AppCompatActivity {
             resetTimer();
         });
 
-        updateCountDown();
     }
 
     private void resetTimer() {
-        timeLeftInMillis = START_TIME_IN_MILLIS;
+        timeLeftInMillis = START_TIME;
         updateCountDown();
-        resetButton.setVisibility(View.INVISIBLE);
-        startPauseButton.setVisibility(View.VISIBLE);
+        updateButtons();
     }
 
     private void startTimer() {
+
+        endTime = System.currentTimeMillis() + timeLeftInMillis;
+
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long l) {
@@ -75,9 +80,7 @@ public class timoutTimer extends AppCompatActivity {
             @Override
             public void onFinish() {
                 isTimerRunning = false;
-                startPauseButton.setText(R.string.startText);
-                startPauseButton.setVisibility(View.INVISIBLE);
-                resetButton.setVisibility(View.VISIBLE);
+                updateButtons();
 
                 playSound();
                 playVibrate();
@@ -86,8 +89,7 @@ public class timoutTimer extends AppCompatActivity {
         }.start();
 
         isTimerRunning = true;
-        startPauseButton.setText(R.string.pauseText);
-        resetButton.setVisibility(View.INVISIBLE);
+        updateButtons();
     }
 
     private void updateCountDown() {
@@ -98,11 +100,31 @@ public class timoutTimer extends AppCompatActivity {
         countDowntext.setText(timeLeft);
     }
 
+    private void updateButtons() {
+        if (isTimerRunning) {
+          resetButton.setVisibility(View.INVISIBLE);
+          startPauseButton.setText(R.string.pauseText);
+        } else {
+            startPauseButton.setText(R.string.startText);
+
+            if (timeLeftInMillis < 1000) {
+                startPauseButton.setVisibility(View.INVISIBLE);
+            } else {
+                startPauseButton.setVisibility(View.VISIBLE);
+            }
+
+            if (timeLeftInMillis < START_TIME) {
+                resetButton.setVisibility(View.VISIBLE);
+            } else {
+                resetButton.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
     private void pauseTimer() {
         countDownTimer.cancel();
         isTimerRunning = false;
-        startPauseButton.setText(R.string.startText);
-        resetButton.setVisibility(View.VISIBLE);
+        updateButtons();
     }
 
     private void playSound() {
@@ -118,6 +140,46 @@ public class timoutTimer extends AppCompatActivity {
             vibrationEffect = VibrationEffect.createOneShot(9000,VibrationEffect.DEFAULT_AMPLITUDE);
             vibrator.cancel();
             vibrator.vibrate(vibrationEffect);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putLong("millisLeft", timeLeftInMillis);
+        editor.putBoolean("timerRunning", isTimerRunning);
+        editor.putLong("endTime", endTime);
+        editor.apply();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
+        timeLeftInMillis = prefs.getLong("millisLeft", START_TIME);
+        isTimerRunning = prefs.getBoolean("timerRunning",false);
+
+        updateCountDown();
+        updateButtons();
+
+        if (isTimerRunning) {
+            endTime = prefs.getLong("endTime", 0);
+            timeLeftInMillis = endTime - System.currentTimeMillis();
+
+            if (timeLeftInMillis < 0) {
+                timeLeftInMillis = 0;
+                isTimerRunning = false;
+                updateCountDown();
+                updateButtons();
+            } else {
+                startTimer();
+            }
         }
     }
 }
