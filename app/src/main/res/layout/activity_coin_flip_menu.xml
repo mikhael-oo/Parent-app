@@ -57,4 +57,14 @@
             android:text="Tails" />
     </RadioGroup>
 
+    <Button
+        android:id="@+id/coin_menu_history_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toss_menu_btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

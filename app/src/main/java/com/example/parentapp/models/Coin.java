@@ -36,6 +36,14 @@ public class Coin {
         return history.isEmpty();
     }
 
+    public int historyLength()  {
+        return history.size();
+    }
+
+    public int recordLength()   {
+        return history.get(0).length;
+    }
+
     public String[] getRecord(int i)    {
         return history.get(i);
     }
@@ -48,10 +56,12 @@ public class Coin {
         return null;
     }
 
+    public ArrayList<String[]> getHistory() {
+        return history;
+    }
 
 
 
-    // return true for head, false for tail
     public boolean toss()   {
 
         int toss = (int) (Math.random() + 0.5);

@@ -8,15 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
-import com.example.parentapp.models.Kid;
-import com.example.parentapp.models.KidManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CoinFlipMenuActivity extends AppCompatActivity {
 
@@ -28,7 +22,10 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coin_flip_menu);
 
         setupTossMenuBtn();
+        setupHistoryBtn();
     }
+
+
 
 
     private void setupTossMenuBtn() {
@@ -68,6 +65,8 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
     }
 
 
+
+
     private boolean isThisKidTurn(EditText kidNameEd, String[] lastRecord) {
         if(!coin.isHistoryEmpty()) {
             String kidName = kidNameEd.getText().toString();
@@ -75,4 +74,21 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         }
         return false;
     }
+
+
+
+
+
+    private void setupHistoryBtn() {
+
+        Button histBtn = findViewById(R.id.coin_menu_history_btn);
+        histBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = HistoryActivity.makeIntent(CoinFlipMenuActivity.this);
+                startActivity(intent);
+            }
+        });
+    }
+
 }

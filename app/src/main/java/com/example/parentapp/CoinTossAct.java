@@ -34,6 +34,13 @@ public class CoinTossAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coin_toss);
+    }
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         extractDataFromIntent();
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
@@ -41,10 +48,15 @@ public class CoinTossAct extends AppCompatActivity {
         ImageView coinImg = findViewById(R.id.coin_img);
         rotate.setAnimationListener(animRotateListener(coinImg, rotate, extraRotate));
         extraRotate.setAnimationListener(animRotateExtraListener(coinImg, rotate, extraRotate));
-        setupTossBtn(coinImg, rotate, extraRotate);
+        startFlip(coinImg, rotate);
+        counter = MAX_SPINS;
     }
 
 
+    private void startFlip(ImageView coinImg, Animation rotate) {
+        isTail = !coin.toss();
+        coinImg.startAnimation(rotate);
+    }
 
 
 
@@ -56,39 +68,6 @@ public class CoinTossAct extends AppCompatActivity {
         kidToTossName = name;
     }
 
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        counter = MAX_SPINS;
-    }
-
-
-
-
-    private void setupTossBtn(ImageView img, Animation anm, Animation ext) {
-
-        Button tossBtn = findViewById(R.id.toss_btn);
-        tossBtn.setOnClickListener(tossListener(img, anm, ext));
-    }
-
-
-
-
-    @NonNull
-    private View.OnClickListener tossListener(ImageView img, Animation anm, Animation ext) {
-        return new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                isTail = false;
-                resetAnimations(img, anm, ext);
-                if(!coin.toss())    isTail = true;
-                img.startAnimation(anm);
-            }
-        };
-    }
 
 
 
@@ -197,5 +176,4 @@ public class CoinTossAct extends AppCompatActivity {
         intent.putExtra(KID_CHOICE_KEY, choice);
         return intent;
     }
-
 }
