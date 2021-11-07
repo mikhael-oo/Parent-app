@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.parentapp.models.Timer;
 
@@ -37,6 +38,7 @@ public class preTimer extends AppCompatActivity {
 
     private void populateMinutesGroup() {
         RadioGroup group = findViewById(R.id.minutesGroup);
+        Button customButton = findViewById(R.id.customButton);
 
         int[] minutes = getResources().getIntArray(R.array.minutes);
 
@@ -45,21 +47,35 @@ public class preTimer extends AppCompatActivity {
             if (minute != 0) {
 
                 RadioButton button = new RadioButton(this);
-                button.setText(minute+ " MINS");
+                button.setText(minute+ " MINUTES");
 
                 group.addView(button);
-                button.setOnClickListener(view -> {
-                    timer.setMinutes(minute);
-                });
+                button.setOnClickListener(view -> timer.setMinutes(minute));
             } else {
-                RadioButton button = new RadioButton(this);
-                button.setText("CUSTOM TIME");
-                group.addView(button);
+                RadioButton radioButton = new RadioButton(this);
+                radioButton.setText(R.string.customTimeText);
+                group.addView(radioButton);
 
-                button.setOnClickListener(view -> {
-                    EditText number = findViewById(R.id.customNumber);
-                    int num = Integer.parseInt(number.getText().toString());
-                    timer.setMinutes(num);
+                customButton.setOnClickListener(view -> {
+                    if (radioButton.isChecked()) {
+                        EditText number = findViewById(R.id.customNumber);
+                        String input = number.getText().toString();
+
+                        if (input.length() == 0) {
+                            Toast.makeText(preTimer.this, "No Empty Field Input Allowed", Toast.LENGTH_SHORT).show();
+                        } else {
+                            int num = Integer.parseInt(input);
+
+                            if (num == 0) {
+                                Toast.makeText(preTimer.this, "Enter Positive number", Toast.LENGTH_SHORT).show();
+                            } else {
+                                timer.setMinutes(num);
+                            }
+                        }
+
+
+                    }
+
                 });
             }
         }

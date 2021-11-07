@@ -8,5 +8,7 @@
 
     <string name="choosingText">CHOOSE THE TIMEOUT PERIOD</string>
     <string name="toTimer">GO TO TIMER</string>
-    <string name="custom">Custom Timer(minutes):</string>
+    <string name="custom">Set Custom Time</string>
+    <string name="customTimeText">CUSTOM TIME</string>
+    <string name="hint">Minutes</string>
 </resources>

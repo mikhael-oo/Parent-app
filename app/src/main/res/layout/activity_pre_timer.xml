@@ -38,23 +38,22 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/custom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/custom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/minutesGroup" />
-
     <EditText
         android:id="@+id/customNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/hint"
+        android:autofillHints="5"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/custom"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/minutesGroup" />
+
+    <Button
+        android:id="@+id/customButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/custom"
+        app:layout_constraintStart_toEndOf="@+id/customNumber"
+        app:layout_constraintTop_toTopOf="@+id/customNumber" />
 </androidx.constraintlayout.widget.ConstraintLayout>

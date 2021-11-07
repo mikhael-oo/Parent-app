@@ -3,7 +3,7 @@ package com.example.parentapp.models;
 public class Timer {
     private static Timer instance;
 
-    private int minutes;
+    private int minutes = 1;
 
     private Timer() {}
 

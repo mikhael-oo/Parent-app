@@ -12,6 +12,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.parentapp.models.Timer;
@@ -20,7 +21,7 @@ import java.util.Locale;
 
 public class timoutTimer extends AppCompatActivity {
     private Timer timer = Timer.getTimerInstance();
-    private final long START_TIME = timer.getMinutes() * 60000;
+    private long START_TIME = timer.getMinutes() * 60000;
     //private static final long START_TIME_IN_MILLIS = 60000;
 
     private TextView countDowntext;
@@ -30,10 +31,11 @@ public class timoutTimer extends AppCompatActivity {
     private CountDownTimer countDownTimer;
 
     private boolean isTimerRunning;
-
     private long timeLeftInMillis = START_TIME;
-
     private long endTime;
+
+    //private EditText editTextInput; //from the pre-timer xml class
+    //private Button inputButton; // from the pre-timer xml class
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class timoutTimer extends AppCompatActivity {
         countDowntext = findViewById(R.id.countdown_text);
         startPauseButton = findViewById(R.id.start_pause_button);
         resetButton = findViewById(R.id.reset_button);
+
+        //editTextInput = findViewById(R.id.customNumber);
+        //inputButton = findViewById(R.id.customButton);
 
         startPauseButton.setOnClickListener(view -> {
             if(isTimerRunning) {
@@ -62,7 +67,7 @@ public class timoutTimer extends AppCompatActivity {
     private void resetTimer() {
         timeLeftInMillis = START_TIME;
         updateCountDown();
-        updateButtons();
+        updateTimerInterface();
     }
 
     private void startTimer() {
@@ -80,7 +85,7 @@ public class timoutTimer extends AppCompatActivity {
             @Override
             public void onFinish() {
                 isTimerRunning = false;
-                updateButtons();
+                updateTimerInterface();
 
                 playSound();
                 playVibrate();
@@ -89,22 +94,35 @@ public class timoutTimer extends AppCompatActivity {
         }.start();
 
         isTimerRunning = true;
-        updateButtons();
+        updateTimerInterface();
     }
 
     private void updateCountDown() {
-        int minutes = (int) timeLeftInMillis / 60000;
+        int hours = (int) (timeLeftInMillis / 1000) / 3600;
+        int minutes = (int) ((timeLeftInMillis / 1000) % 3600) / 60 ;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
 
-        String timeLeft = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        String timeLeft;
+
+        if (hours > 0) {
+            timeLeft = String.format(Locale.getDefault(),
+                    "%d:%02d:%02d",hours, minutes, seconds);
+        } else {
+            timeLeft = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        }
+
         countDowntext.setText(timeLeft);
     }
 
-    private void updateButtons() {
+    private void updateTimerInterface() {
         if (isTimerRunning) {
           resetButton.setVisibility(View.INVISIBLE);
           startPauseButton.setText(R.string.pauseText);
+          //editTextInput.setVisibility(View.INVISIBLE);
+          //inputButton.setVisibility(View.INVISIBLE);
         } else {
+            //editTextInput.setVisibility(View.VISIBLE);
+            //inputButton.setVisibility(View.VISIBLE);
             startPauseButton.setText(R.string.startText);
 
             if (timeLeftInMillis < 1000) {
@@ -113,7 +131,7 @@ public class timoutTimer extends AppCompatActivity {
                 startPauseButton.setVisibility(View.VISIBLE);
             }
 
-            if (timeLeftInMillis < START_TIME) {
+            if (timeLeftInMillis != START_TIME) {
                 resetButton.setVisibility(View.VISIBLE);
             } else {
                 resetButton.setVisibility(View.INVISIBLE);
@@ -124,7 +142,7 @@ public class timoutTimer extends AppCompatActivity {
     private void pauseTimer() {
         countDownTimer.cancel();
         isTimerRunning = false;
-        updateButtons();
+        updateTimerInterface();
     }
 
     private void playSound() {
@@ -150,10 +168,15 @@ public class timoutTimer extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
+        //editor.putLong("startTimeInMillis", START_TIME);
         editor.putLong("millisLeft", timeLeftInMillis);
         editor.putBoolean("timerRunning", isTimerRunning);
         editor.putLong("endTime", endTime);
         editor.apply();
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
     }
 
     @Override
@@ -162,11 +185,12 @@ public class timoutTimer extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
 
+        //START_TIME = prefs.getLong("startTimeInMillis", timer.getMinutes() * 60000);
         timeLeftInMillis = prefs.getLong("millisLeft", START_TIME);
         isTimerRunning = prefs.getBoolean("timerRunning",false);
 
         updateCountDown();
-        updateButtons();
+        updateTimerInterface();
 
         if (isTimerRunning) {
             endTime = prefs.getLong("endTime", 0);
@@ -176,7 +200,7 @@ public class timoutTimer extends AppCompatActivity {
                 timeLeftInMillis = 0;
                 isTimerRunning = false;
                 updateCountDown();
-                updateButtons();
+                updateTimerInterface();
             } else {
                 startTimer();
             }
