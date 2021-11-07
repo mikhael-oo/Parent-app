@@ -17,12 +17,17 @@ import android.widget.Toast;
 import com.example.parentapp.models.Coin;
 
 public class CoinTossAct extends AppCompatActivity {
-    private static String KID_NAME_KEY = "The kid name for the new coin toss";
+    private static final String KID_NAME_KEY = "The kid name for the new coin toss";
+    private static final String KID_CHOICE_KEY = "The kid choice for the new coin toss";
     private String kidToTossName = null;
+    private boolean kidChoice = false;
+    private boolean isKidWinner = false;
     private static final int MAX_SPINS = 15;
     private final Coin coin = Coin.getCoinInstance();
     private boolean isTail = false;
     private int counter = MAX_SPINS;
+
+
 
 
     @Override
@@ -41,14 +46,13 @@ public class CoinTossAct extends AppCompatActivity {
 
 
 
+
+
     private void extractDataFromIntent() {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra(KID_NAME_KEY);
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
-
-        // Here validate if the kid name is not in the list of kids
-
+        kidChoice = intent.getBooleanExtra(KID_CHOICE_KEY, false);
         kidToTossName = name;
     }
 
@@ -111,6 +115,9 @@ public class CoinTossAct extends AppCompatActivity {
     }
 
 
+
+
+
     @NonNull
     private Animation.AnimationListener animRotateExtraListener(ImageView coinImg, Animation anm, Animation ext) {
         return new Animation.AnimationListener() {
@@ -126,6 +133,7 @@ public class CoinTossAct extends AppCompatActivity {
                     ext.setDuration(ext.getDuration() + ext.getDuration() / (counter + 1));
                 }
                 if(counter < 0) {
+                    tossResult();
                     resetAnimations(coinImg, anm, ext);
                 }
             }
@@ -134,6 +142,30 @@ public class CoinTossAct extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {}
         };
     }
+
+
+
+
+
+    private void tossResult() {
+
+        if(kidChoice != isTail)     isKidWinner = true;
+        // search if the kid is in the list of the kidmanager
+        // if true
+        //  add a record to the coin arraylist
+        // if false
+        // do nothing its a random toss
+
+        /*
+         * here we add to the history*/
+        String theChoice = kidChoice ? "Heads" : "Tails";
+        String outcome = isKidWinner? "WON" : "LOST";
+        coin.addToHistory(kidToTossName, theChoice, outcome);
+    }
+
+
+
+
 
     private void resetAnimations(ImageView c, Animation anm, Animation ext) {
         counter = MAX_SPINS;
@@ -159,9 +191,10 @@ public class CoinTossAct extends AppCompatActivity {
     }
 
 
-    public static Intent makeIntent(Context context, String kidName)   {
+    public static Intent makeIntent(Context context, String kidName, boolean choice)   {
         Intent intent = new Intent(context, CoinTossAct.class);
         intent.putExtra(KID_NAME_KEY, kidName);
+        intent.putExtra(KID_CHOICE_KEY, choice);
         return intent;
     }
 

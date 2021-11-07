@@ -32,10 +32,22 @@ public class Coin {
     }
 
 
+    public boolean isHistoryEmpty() {
+        return history.isEmpty();
+    }
 
     public String[] getRecord(int i)    {
         return history.get(i);
     }
+
+
+    public String[] getLastRecord() {
+        if (!isHistoryEmpty()) {
+            return history.get(history.size() - 1);
+        }
+        return null;
+    }
+
 
 
 
@@ -56,8 +68,8 @@ public class Coin {
         DateFormat df = new SimpleDateFormat("MMM dd @ hh:mm");
         Date now = Calendar.getInstance().getTime();
         newEntry[2] = df.format(now);
-
         newEntry[3] = result;
+        history.add(newEntry);
     }
 
 

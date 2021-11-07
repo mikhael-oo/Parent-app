@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
@@ -32,16 +35,44 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
 
         //create a search base on kid name in kid manager
 
-        Button toss = (Button) findViewById(R.id.toss_menu_btn);
+        Button toss = findViewById(R.id.toss_menu_btn);
+        RadioButton heads = findViewById(R.id.coin_menu_head_rb);
+        RadioButton tails = findViewById(R.id.coin_menu_tail_rb);
+        EditText kidNameEd = findViewById(R.id.coin_kidName_editText);
+
+
         toss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if((heads.isChecked() || tails.isChecked())) {
 
-                EditText kidNameEd = (EditText) findViewById(R.id.coin_kidName_editText);
-                String kidName = kidNameEd.getText().toString();
-                Intent intent = CoinTossAct.makeIntent(CoinFlipMenuActivity.this, kidName);
-                startActivity(intent);
+                    String kidName = kidNameEd.getText().toString();
+                    boolean choice = heads.isChecked();
+
+                    if(!isThisKidTurn(kidNameEd, coin.getLastRecord())) {
+                        Intent intent = CoinTossAct.makeIntent(CoinFlipMenuActivity.this, kidName, choice);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(CoinFlipMenuActivity.this, "Its not " + kidName + "'s Turn"
+                                , Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                else    {
+                    Toast.makeText(CoinFlipMenuActivity.this, "Please choose the outcome"
+                            , Toast.LENGTH_LONG).show();
+                }
             }
         });
+    }
+
+
+    private boolean isThisKidTurn(EditText kidNameEd, String[] lastRecord) {
+        if(!coin.isHistoryEmpty()) {
+            String kidName = kidNameEd.getText().toString();
+            return kidName.equalsIgnoreCase(lastRecord[0]);
+        }
+        return false;
     }
 }
