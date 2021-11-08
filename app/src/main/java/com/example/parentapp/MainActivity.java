@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         childrenEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent = KidActivity.makeIntent(MainActivity.this);
-              //  startActivity(intent);
+               //Intent intent = KidActivity.makeIntent(MainActivity.this);
+               //startActivity(intent);
             }
         });
 
