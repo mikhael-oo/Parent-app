@@ -29,7 +29,7 @@ public class HistoryActivity extends AppCompatActivity {
     public static final int RADIUS_OF_TV = 10;
     public static final String WON = "WON";
     public static final int GOLD_COLOR = 0xFFF6D205;
-    private Coin coin = Coin.getCoinInstance();
+    private final Coin coin = Coin.getCoinInstance();
 
 
 

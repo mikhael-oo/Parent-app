@@ -18,7 +18,7 @@ import com.example.parentapp.models.Coin;
  */
 public class CoinFlipMenuActivity extends AppCompatActivity {
 
-    private Coin coin = Coin.getCoinInstance();
+    private final Coin coin = Coin.getCoinInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

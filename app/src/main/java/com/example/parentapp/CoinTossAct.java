@@ -1,19 +1,15 @@
 package com.example.parentapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parentapp.models.Coin;
 
@@ -100,7 +96,7 @@ public class CoinTossAct extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 if(counter >= 0 )   {
                     anm.setDuration(anm.getDuration() + anm.getDuration() / (counter + 1));
-                    swtichPictures(coinImg);
+                    switchPictures(coinImg);
                     coinImg.startAnimation(ext);
                 }
                 counter--;
@@ -178,7 +174,7 @@ public class CoinTossAct extends AppCompatActivity {
     }
 
 
-    private void swtichPictures(ImageView coinImg) {
+    private void switchPictures(ImageView coinImg) {
         if(counter % 2 == 1)    {
             coinImg.setImageResource(R.drawable.loonie_tail);
         }
