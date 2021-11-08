@@ -21,6 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddKidActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditKidActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KidActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KidMenuActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
