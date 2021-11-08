@@ -20,7 +20,7 @@ import com.example.parentapp.models.Timer;
 
 import java.util.Locale;
 
-public class timoutTimer extends AppCompatActivity {
+public class TimoutTimer extends AppCompatActivity {
     private Timer timer = Timer.getTimerInstance();
     private long START_TIME = timer.getMinutes() * 60000;
     //private static final long START_TIME_IN_MILLIS = 60000;

@@ -39,6 +39,12 @@
         <activity
             android:name=".KidMenuActivity"
             android:exported="true" />
+        <activity
+            android:name=".PreTimer"
+            android:exported="true" />
+        <activity
+            android:name=".TimoutTimer"
+            android:exported="true" />
     </application>
 
 </manifest>

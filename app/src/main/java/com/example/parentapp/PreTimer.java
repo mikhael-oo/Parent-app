@@ -1,12 +1,9 @@
 package com.example.parentapp;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -15,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.parentapp.models.Timer;
 
-public class preTimer extends AppCompatActivity {
+public class PreTimer extends AppCompatActivity {
     private Timer timer;
 
     @Override
@@ -30,7 +27,7 @@ public class preTimer extends AppCompatActivity {
     private void toTimer() {
         Button button = findViewById(R.id.toTimer);
         button.setOnClickListener(view -> {
-            Intent intent = new Intent(preTimer.this, timoutTimer.class);
+            Intent intent = new Intent(PreTimer.this, TimoutTimer.class);
             startActivity(intent);
         });
     }
@@ -62,12 +59,12 @@ public class preTimer extends AppCompatActivity {
                         String input = number.getText().toString();
 
                         if (input.length() == 0) {
-                            Toast.makeText(preTimer.this, "No Empty Field Input Allowed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PreTimer.this, "No Empty Field Input Allowed", Toast.LENGTH_SHORT).show();
                         } else {
                             int num = Integer.parseInt(input);
 
                             if (num == 0) {
-                                Toast.makeText(preTimer.this, "Enter Positive number", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PreTimer.this, "Enter Positive number", Toast.LENGTH_SHORT).show();
                             } else {
                                 timer.setMinutes(num);
                             }
