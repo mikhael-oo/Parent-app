@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        setupAllButtons();
     }
 
     public static Intent makeIntent(Context context){
@@ -40,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         childrenEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //Intent intent = KidActivity.makeIntent(MainActivity.this);
-               //startActivity(intent);
+               Intent intent = KidActivity.makeIntent(MainActivity.this);
+               startActivity(intent);
             }
         });
 

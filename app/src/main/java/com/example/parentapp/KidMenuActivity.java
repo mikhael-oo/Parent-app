@@ -19,6 +19,7 @@ import com.example.parentapp.models.KidManager;
 
 
 public class KidMenuActivity extends AppCompatActivity {
+
     KidManager manager;
 
     public static Intent makeIntent(Context context){
