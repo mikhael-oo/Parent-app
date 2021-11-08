@@ -13,11 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button tester = findViewById(R.id.test);
 
-        tester.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, preTimer.class);
-            startActivity(intent);
-        });
     }
 }

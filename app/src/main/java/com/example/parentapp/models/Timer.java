@@ -5,6 +5,7 @@ public class Timer {
 
     private int minutes = 1;
 
+
     private Timer() {}
 
     public static Timer getTimerInstance() {
