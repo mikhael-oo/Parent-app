@@ -8,7 +8,7 @@
     >
 
     <Button
-        android:id="@+id/timeoutTimer"
+        android:id="@+id/addChoice"
         android:layout_width="162dp"
         android:layout_height="93dp"
         android:layout_alignParentStart="true"
@@ -16,13 +16,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Timeout Timer!"
+        android:text="Add a new Kid!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintTop_toBottomOf="@+id/editChoice"
+        app:layout_constraintVertical_bias="0.078" />
+
 
     <TextView
         android:id="@+id/mainTitle"
@@ -31,18 +32,18 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:shadowColor="#FFFFFF"
-        android:text="Welcome to the Practical Parent App!"
+        android:text="Choose what you would like to do with your kids!"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/editKid"
+        app:layout_constraintBottom_toTopOf="@+id/editChoice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.815" />
 
     <Button
-        android:id="@+id/CoinFlip"
+        android:id="@+id/editChoice"
         android:layout_width="162dp"
         android:layout_height="93dp"
         android:layout_alignParentStart="true"
@@ -50,30 +51,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Coin Flip!"
-        app:layout_constraintBottom_toTopOf="@+id/timeoutTimer"
+        android:text="Edit your current kids!"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
-
-    <Button
-        android:id="@+id/editKid"
-        android:layout_width="162dp"
-        android:layout_height="93dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:text="Your Kids!"
-        app:layout_constraintBottom_toTopOf="@+id/CoinFlip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859" />
+        app:layout_constraintVertical_bias="0.401" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

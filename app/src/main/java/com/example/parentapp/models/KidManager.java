@@ -14,7 +14,6 @@ public class KidManager implements Iterable<Kid>{
     public List<Kid> kids = new ArrayList<>();
     Kid kid;
 
-
     public List<Kid> returnGames() {
         return kids;
     }
@@ -35,6 +34,10 @@ public class KidManager implements Iterable<Kid>{
         return this.kid.getName();
     }
 
+    public List<Kid> returnKids() {
+        return kids;
+    }
+
 
     private static KidManager managerInstance = null;
 
@@ -50,6 +53,6 @@ public class KidManager implements Iterable<Kid>{
     @NonNull
     @Override
     public Iterator<Kid> iterator() {
-        return null;
+        return kids.iterator();
     }
 }
