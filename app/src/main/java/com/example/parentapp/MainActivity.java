@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // Need to point this to the preTimer activity
+
         Button timeoutBtn = findViewById(R.id.timeoutTimer);
         timeoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
