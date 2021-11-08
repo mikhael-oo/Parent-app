@@ -15,6 +15,7 @@
         android:layout_marginBottom="200dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="153dp"
         android:layout_marginBottom="200dp"
-        android:text="Toss"
+        android:text="@string/toss"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,20 +49,20 @@
             android:id="@+id/coin_menu_head_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Heads" />
+            android:text="@string/heads" />
 
         <RadioButton
             android:id="@+id/coin_menu_tail_rb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tails" />
+            android:text="@string/tails" />
     </RadioGroup>
 
     <Button
         android:id="@+id/coin_menu_history_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="History"
+        android:text="@string/history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -11,4 +11,15 @@
     <string name="custom">Set Custom Time</string>
     <string name="customTimeText">CUSTOM TIME</string>
     <string name="hint">Minutes</string>
+    <string name="history_of_coin_flips">History of Coin Flips</string>
+    <string name="result_history_header">Result</string>
+    <string name="name_history_header">Name</string>
+    <string name="choice_history_header">Choice</string>
+    <string name="time_history_header">Time</string>
+    <string name="picture_of_a_coin_to_be_animated">Picture of a Coin to be animated</string>
+    <string name="toss">Toss</string>
+    <string name="heads">Heads</string>
+    <string name="tails">Tails</string>
+    <string name="history">History</string>
+    <string name="an_icon_representing_the_result_of_coin_toss">An icon representing the result of coin toss</string>
 </resources>

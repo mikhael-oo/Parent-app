@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
 
+/**
+ * This Activity interacts with the user to input their desired kidName and choice of coin side
+ * This Activity can navigate to history of coin tosses or to the coin toss
+ */
 public class CoinFlipMenuActivity extends AppCompatActivity {
 
     private Coin coin = Coin.getCoinInstance();
@@ -77,8 +81,6 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
 
 
 
-
-
     private void setupHistoryBtn() {
 
         Button histBtn = findViewById(R.id.coin_menu_history_btn);
@@ -90,5 +92,4 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
             }
         });
     }
-
 }

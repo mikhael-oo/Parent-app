@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,16 +17,28 @@ import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
 
+/**
+ * This activity is simply an animation demonstration of the coin flip
+ * after the flip is completed, name of the kid will be search against the KidManager data
+ * if kidName is not in the kid Manager then the toss will not be recorded in the history of tosses
+ */
 public class CoinTossAct extends AppCompatActivity {
+
+    public static final int DURATION_MILLIS = 50;
     private static final String KID_NAME_KEY = "The kid name for the new coin toss";
     private static final String KID_CHOICE_KEY = "The kid choice for the new coin toss";
+    private static final String HEADS = "Heads";
+    private static final String TAILS = "Tails";
+    private static final String WON = "WON";
+    private static final String LOST = "LOST";
     private String kidToTossName = null;
     private boolean kidChoice = false;
     private boolean isKidWinner = false;
-    private static final int MAX_SPINS = 15;
+    private static final int MAX_SPINS = 22;
     private final Coin coin = Coin.getCoinInstance();
     private boolean isTail = false;
     private int counter = MAX_SPINS;
+    private MediaPlayer flipSound;
 
 
 
@@ -55,6 +68,11 @@ public class CoinTossAct extends AppCompatActivity {
 
     private void startFlip(ImageView coinImg, Animation rotate) {
         isTail = !coin.toss();
+        flipSound = MediaPlayer.create(
+                this,
+                R.raw.spinning_coin
+        );
+        playSound(flipSound);
         coinImg.startAnimation(rotate);
     }
 
@@ -137,8 +155,8 @@ public class CoinTossAct extends AppCompatActivity {
 
         /*
          * here we add to the history*/
-        String theChoice = kidChoice ? "Heads" : "Tails";
-        String outcome = isKidWinner? "WON" : "LOST";
+        String theChoice = kidChoice ? HEADS : TAILS;
+        String outcome = isKidWinner? WON : LOST;
         coin.addToHistory(kidToTossName, theChoice, outcome);
     }
 
@@ -148,8 +166,8 @@ public class CoinTossAct extends AppCompatActivity {
 
     private void resetAnimations(ImageView c, Animation anm, Animation ext) {
         counter = MAX_SPINS;
-        anm.setDuration(50);
-        ext.setDuration(50);
+        anm.setDuration(DURATION_MILLIS);
+        ext.setDuration(DURATION_MILLIS);
         if(isTail) {
             c.setImageResource(R.drawable.loonie_tail);
         }
@@ -167,6 +185,12 @@ public class CoinTossAct extends AppCompatActivity {
         if(counter % 2 == 0)    {
             coinImg.setImageResource(R.drawable.loonie_head);
         }
+    }
+
+
+
+    private void playSound(MediaPlayer s) {
+        if(!s.isPlaying())   s.start();
     }
 
 
