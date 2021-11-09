@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parentapp.models.Coin;
-import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
 /**
@@ -46,6 +46,8 @@ public class CoinTossAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coin_toss);
+        setTitle(getString(R.string.coin_toss_title));
+
     }
 
 
@@ -63,6 +65,17 @@ public class CoinTossAct extends AppCompatActivity {
         startFlip(coinImg, rotate);
         counter = MAX_SPINS;
     }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if(flipSound != null)   {
+            flipSound.stop();
+        }
+        finish();
+    }
+
 
 
     private void startFlip(ImageView coinImg, Animation rotate) {
@@ -151,6 +164,9 @@ public class CoinTossAct extends AppCompatActivity {
             String outcome = isKidWinner ? WON : LOST;
             coin.addToHistory(kidToTossName, theChoice, outcome);
         }
+        TextView result_tv = findViewById(R.id.result_tv);
+        String res = isTail ? TAILS: HEADS;
+        result_tv.setText(res);
     }
 
 

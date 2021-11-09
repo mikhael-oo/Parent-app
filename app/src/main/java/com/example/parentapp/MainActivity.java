@@ -33,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
         setupAllButtons();
     }
 
+
     public static Intent makeIntent(Context context){
         return new Intent(context, MainActivity.class);
     }
 
-    // set up the three required buttons on the screen
+
+
     public void setupAllButtons(){
         Button childrenEditBtn = findViewById(R.id.editKid);
         childrenEditBtn.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Need to point this to the preTimer activity
 
         Button timeoutBtn = findViewById(R.id.timeoutTimer);
         timeoutBtn.setOnClickListener(new View.OnClickListener() {

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
@@ -25,11 +25,12 @@ child's name
 
 public class EditKidActivity extends AppCompatActivity {
 
-    KidManager manager;
-    EditText editInputName;
-    String kidName;
-    int position;
-    Kid editedKid;
+    private Coin coin = Coin.getCoinInstance();
+    private KidManager manager;
+    private EditText editInputName;
+    private String kidName;
+    private int position;
+    private Kid editedKid;
 
 
     public static Intent makeIntent(Context context) {
@@ -41,6 +42,7 @@ public class EditKidActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kid_edit);
         ActionBar ab = getSupportActionBar();
+        assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -71,8 +73,7 @@ public class EditKidActivity extends AppCompatActivity {
             case R.id.action_save_kid:
 
                 kidName = (editInputName.getText().toString());
-
-
+                coin.editHistory(editedKid.getName(), kidName);
                 editedKid.setName(kidName);
 
                 Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
@@ -88,6 +89,7 @@ public class EditKidActivity extends AppCompatActivity {
             case R.id.action_delete_kid:
                 Toast.makeText(this, "Deleting your " + editedKid.getName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
+                coin.deleteFromHistory(kidName);
                 manager.removeKid(position);
                 return true;
 

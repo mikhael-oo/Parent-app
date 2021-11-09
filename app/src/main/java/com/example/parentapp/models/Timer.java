@@ -1,5 +1,8 @@
 package com.example.parentapp.models;
 
+/**
+ * Timer class which represents a timer
+ */
 public class Timer {
     private static Timer instance;
 

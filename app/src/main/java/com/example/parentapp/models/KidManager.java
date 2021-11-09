@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/*
+/**
 kid manager class which allows us to add a child, edit it, or even delete it
 implements singleton support
  */
 public class KidManager implements Iterable<Kid>{
     public List<Kid> kids = new ArrayList<>();
-    Kid kid;
 
 
     public List<Kid> returnGames() {

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CoinFlipMenuActivity">
+    tools:context=".CoinFlipMenuActivity"
+    android:background="@drawable/backg">
 
     <EditText
         android:id="@+id/coin_kidName_editText"
@@ -16,6 +17,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="#FFF6D205"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,13 +47,15 @@
             android:id="@+id/coin_menu_head_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/heads" />
+            android:text="@string/heads"
+            android:textColor="#FFF6D205" />
 
         <RadioButton
             android:id="@+id/coin_menu_tail_rb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tails" />
+            android:text="@string/tails"
+            android:textColor="#FFF6D205" />
     </RadioGroup>
 
     <Button

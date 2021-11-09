@@ -26,6 +26,7 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coin_flip_menu);
 
+        setTitle(getString(R.string.coin_toss_menu_title));
         setupTossMenuBtn();
         setupHistoryBtn();
     }
@@ -34,8 +35,6 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
 
 
     private void setupTossMenuBtn() {
-
-        //create a search base on kid name in kid manager
 
         Button toss = findViewById(R.id.toss_menu_btn);
         RadioButton heads = findViewById(R.id.coin_menu_head_rb);

@@ -23,7 +23,6 @@ import java.util.Locale;
 public class TimoutTimer extends AppCompatActivity {
     private Timer timer = Timer.getTimerInstance();
     private long START_TIME = timer.getMinutes() * 60000;
-    //private static final long START_TIME_IN_MILLIS = 60000;
 
     private TextView countDowntext;
     private Button startPauseButton;
@@ -38,14 +37,12 @@ public class TimoutTimer extends AppCompatActivity {
 
     MediaPlayer mp;
 
-    //private EditText editTextInput; //from the pre-timer xml class
-    //private Button inputButton; // from the pre-timer xml class
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
-
+        setTitle(getString(R.string.timeout_timer_title));
         countDowntext = findViewById(R.id.countdown_text);
         startPauseButton = findViewById(R.id.start_pause_button);
         resetButton = findViewById(R.id.reset_button);

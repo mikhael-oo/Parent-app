@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +37,8 @@ public class AddKidActivity extends AppCompatActivity {
         setContentView(R.layout.activity_kid_add);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+        setTitle(getString(R.string.add_kid_title));
+
 
         manager = KidManager.getInstance();
         Intent intent = getIntent();

@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class Coin {
 
-    private ArrayList<String[]> history;
+    private final ArrayList<String[]> history;
 
 
     private static Coin instance = null;

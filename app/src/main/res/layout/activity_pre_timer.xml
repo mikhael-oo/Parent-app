@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PreTimer">
+    tools:context=".PreTimer"
+    android:background="@drawable/backg">
 
     <TextView
         android:id="@+id/choosingText"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/choosingText"
-        android:textColor="#2196F3"
+        android:textColor="#FFF6D205"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +43,11 @@
         android:id="@+id/customNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="5"
         android:ems="10"
         android:hint="@string/hint"
-        android:autofillHints="5"
         android:inputType="number"
+        android:textColor="#FFF6D205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/minutesGroup" />
 

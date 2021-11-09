@@ -1,8 +1,6 @@
 package com.example.parentapp.models;
 
-import java.time.LocalDateTime;
-
-/*
+/**
 Class designed to model child in Practical Parent.
 Filled with simple getters and setters of names and age of child.
  */

@@ -14,11 +14,15 @@ import android.widget.Toast;
 import com.example.parentapp.models.Timer;
 
 public class PreTimer extends AppCompatActivity {
+
+    private final String NOT_EMPTY = "No Empty Field Input Allowed";
+    private final String POS_NUMBER_STRING = "Enter Positive number";
     private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Timeout Configuration");
         setContentView(R.layout.activity_pre_timer);
         timer = Timer.getTimerInstance();
         toTimer();
@@ -49,11 +53,13 @@ public class PreTimer extends AppCompatActivity {
 
                 RadioButton button = new RadioButton(this);
                 button.setText(minute+ " MINUTES");
+                button.setTextColor(0xFFF6D205);
 
                 group.addView(button);
                 button.setOnClickListener(view -> timer.setMinutes(minute));
             } else {
                 RadioButton radioButton = new RadioButton(this);
+                radioButton.setTextColor(0xFFF6D205);
                 radioButton.setText(R.string.customTimeText);
                 group.addView(radioButton);
 
@@ -63,12 +69,12 @@ public class PreTimer extends AppCompatActivity {
                         String input = number.getText().toString();
 
                         if (input.length() == 0) {
-                            Toast.makeText(PreTimer.this, "No Empty Field Input Allowed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PreTimer.this, NOT_EMPTY, Toast.LENGTH_SHORT).show();
                         } else {
                             int num = Integer.parseInt(input);
 
                             if (num == 0) {
-                                Toast.makeText(PreTimer.this, "Enter Positive number", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PreTimer.this, POS_NUMBER_STRING, Toast.LENGTH_SHORT).show();
                             } else {
                                 timer.setMinutes(num);
                             }

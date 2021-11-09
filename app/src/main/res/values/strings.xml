@@ -23,4 +23,11 @@
     <string name="tails">Tails</string>
     <string name="history">History</string>
     <string name="an_icon_representing_the_result_of_coin_toss">An icon representing the result of coin toss</string>
+    <string name="coin_toss_menu_title">Coin Toss Menu</string>
+    <string name="coin_toss_title">Coin Toss</string>
+    <string name="add_kid_title">Add a Kid</string>
+    <string name="history_activity_title">History of Tosses</string>
+    <string name="kid_menu_title">Kid Configuration</string>
+    <string name="kid_menu_activity_title">List of Kids!</string>
+    <string name="timeout_timer_title">Timeout Timer</string>
 </resources>

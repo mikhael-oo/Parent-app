@@ -28,6 +28,9 @@ Updates whenever changes are made in terms of edits and deletions
  */
 public class KidMenuActivity extends AppCompatActivity {
 
+    public static final String YOU_HAVE_NO_KIDS = "You have no kids!";
+    public static final String KID_INDEX_KEY= "Kid Index";
+    public static final String BYE_BYE = "Bye bye!";
     KidManager manager;
 
     public static Intent makeIntent(Context context) {
@@ -39,12 +42,11 @@ public class KidMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kid_menu);
         ActionBar ab = getSupportActionBar();
+        assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
-
         manager = KidManager.getInstance();
         registerClickOnList();
-
-        getSupportActionBar().setTitle("List of Kids!");
+        getSupportActionBar().setTitle(R.string.kid_menu_activity_title);
         populateKidView();
 
 
@@ -52,7 +54,7 @@ public class KidMenuActivity extends AppCompatActivity {
 
     public void checkEmpty(){
         if(manager.returnKids() == null) {
-            Toast.makeText(this, "You have no kids!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, YOU_HAVE_NO_KIDS, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -106,7 +108,7 @@ public class KidMenuActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                 Intent editIntent = new Intent(KidMenuActivity.this, EditKidActivity.class);
                 Bundle editBundle = new Bundle();
-                editBundle.putInt("Kid Index", position);
+                editBundle.putInt(KID_INDEX_KEY, position);
                 editIntent.putExtras(editBundle);
                 startActivity(editIntent);
 
@@ -117,7 +119,7 @@ public class KidMenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Toast.makeText(this, "Bye bye!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, BYE_BYE, Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
 
