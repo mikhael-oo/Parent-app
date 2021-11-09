@@ -93,4 +93,10 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    public static Intent makeIntent(Context context)   {
+        Intent intent = new Intent(context, CoinFlipMenuActivity.class);
+        return intent;
+    }
 }

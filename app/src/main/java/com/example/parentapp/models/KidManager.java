@@ -31,6 +31,14 @@ public class KidManager implements Iterable<Kid>{
         return kids;
     }
 
+    public boolean search(String name)   {
+
+        for(int i = 0; i < kids.size(); i++)    {
+            if(kids.get(i).getName().equalsIgnoreCase(name))    return true;
+        }
+        return false;
+    }
+
 
     private static KidManager managerInstance = null;
 

@@ -15,12 +15,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.parentapp.models.KidManager;
+
 /**
  * This class displays the screen where you choose
  * whether to add kids, edit them, timeout your kid, and coin flip for
  * tasks
  */
 public class MainActivity extends AppCompatActivity {
+
+    private KidManager kidManager = KidManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +52,16 @@ public class MainActivity extends AppCompatActivity {
         coinFlipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = CoinTossAct.makeIntent(MainActivity.this);
-//                startActivity(intent);
+
+                if(kidManager.returnKids().isEmpty()) {
+                    Intent intent = CoinTossAct.makeIntent(MainActivity.this, null, false);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = CoinFlipMenuActivity.makeIntent(MainActivity.this);
+                    startActivity(intent);
+                }
+
             }
         });
 
