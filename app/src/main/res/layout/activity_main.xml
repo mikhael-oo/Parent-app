@@ -33,13 +33,15 @@
         android:shadowColor="#FFFFFF"
         android:text="Welcome to the Practical Parent App!"
         android:textAlignment="center"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/editKid"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.55"
+        android:textColor="#FFF6D205"
+        android:background="#ED28015D"
+        android:fontFamily="serif"/>
 
     <Button
         android:id="@+id/CoinFlip"
