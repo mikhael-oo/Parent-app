@@ -31,7 +31,6 @@ public class KidActivity extends AppCompatActivity {
         setContentView(R.layout.activity_kid_start);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-
         setupAllButtons();
     }
 

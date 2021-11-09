@@ -14,7 +14,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
@@ -26,13 +25,11 @@ child's name
 
 public class EditKidActivity extends AppCompatActivity {
 
-    private Coin coin = Coin.getCoinInstance();
-    private KidManager manager;
-    private EditText editInputName;
-    private String kidName;
-    private int position;
-    private Kid editedKid;
-
+    KidManager manager;
+    EditText editInputName;
+    String kidName;
+    int position;
+    Kid editedKid;
 
 
     public static Intent makeIntent(Context context) {
@@ -74,9 +71,12 @@ public class EditKidActivity extends AppCompatActivity {
             case R.id.action_save_kid:
 
                 kidName = (editInputName.getText().toString());
-                coin.editHistory(editedKid.getName(), kidName);
+
+
                 editedKid.setName(kidName);
+
                 Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
+
                 finish();
                 return true;
 
@@ -88,7 +88,6 @@ public class EditKidActivity extends AppCompatActivity {
             case R.id.action_delete_kid:
                 Toast.makeText(this, "Deleting your " + editedKid.getName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
-                coin.deleteFromHistory(editedKid.getName());
                 manager.removeKid(position);
                 return true;
 

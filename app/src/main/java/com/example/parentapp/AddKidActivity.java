@@ -55,9 +55,8 @@ public class AddKidActivity extends AppCompatActivity {
         switch(item.getItemId()) {
             case R.id.action_save_kid:
 
-                //if(!(inputKidName.getText().toString()).equals("")) {
-                    kidName = (inputKidName.getText().toString());
-                //}
+
+                kidName = (inputKidName.getText().toString());
 
                 Kid newKid = new Kid(kidName);
                 manager.addKid(newKid);

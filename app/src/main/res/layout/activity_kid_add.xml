@@ -15,7 +15,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editChildTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/editChildTitle"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"/>
 
     <TextView
         android:id="@+id/editChildTitle"
@@ -27,7 +32,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"/>
 
     <EditText
         android:id="@+id/nameInput"

@@ -22,7 +22,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editChoice"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintVertical_bias="0.078"
+        />
 
 
     <TextView
@@ -34,13 +35,16 @@
         android:shadowColor="#FFFFFF"
         android:text="Choose what you would like to do with your kids!"
         android:textAlignment="center"
-        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/editChoice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815" />
+        app:layout_constraintVertical_bias="0.815"
+        android:textColor="#FFF6D205"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"/>
 
     <Button
         android:id="@+id/editChoice"
