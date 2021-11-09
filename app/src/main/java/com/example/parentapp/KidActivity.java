@@ -1,5 +1,7 @@
 package com.example.parentapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,20 +10,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.parentapp.models.Kid;
-
-
+/*
+Kid activity guides user to adding a child or editing children shown in a listview
+Has 2 simple buttons leading to either activity and will guide back to this screen when the
+activities are done
+ */
 public class KidActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kid_start);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
         setupAllButtons();
     }
@@ -50,5 +59,18 @@ public class KidActivity extends AppCompatActivity {
             }
         });
 
+    }
+    //comment hiello
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                Toast.makeText(this, "Bye bye!", Toast.LENGTH_SHORT).show();
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

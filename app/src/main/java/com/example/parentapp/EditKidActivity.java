@@ -3,16 +3,25 @@ package com.example.parentapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+
+/*
+Edits the child's name and supports deletion of the child as well, it takes a bundle of the
+position of the child and sets it to the array position of the kidmanager and allows access to the
+child's name
+ */
 
 public class EditKidActivity extends AppCompatActivity {
 
@@ -20,28 +29,40 @@ public class EditKidActivity extends AppCompatActivity {
     EditText editInputName;
     String kidName;
     int position;
+    Kid editedKid;
+
 
     public static Intent makeIntent(Context context) {
-        return new Intent(context, KidActivity.class);
+        return new Intent(context, EditKidActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kid_menu);
+        setContentView(R.layout.activity_kid_edit);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
         manager = KidManager.getInstance();
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        position = b.getInt("kid Index");
+        position = b.getInt("Kid Index");
+        editedKid = manager.returnKids().get(position);
 
-        getSupportActionBar().setTitle("Add Kid!");
+        getSupportActionBar().setTitle("Edit " + editedKid.getName() + "'s name!");
 
-        editInputName = (EditText) findViewById(R.id.nameInput);
+        editInputName = (EditText) findViewById(R.id.editNameInput);
+        editInputName.setText(editedKid.getName());
 
+    }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_delete_kid,menu);
+        getMenuInflater().inflate(R.menu.menu_save_kid,menu);
+        return true;
     }
 
     @Override
@@ -49,24 +70,23 @@ public class EditKidActivity extends AppCompatActivity {
         switch(item.getItemId()) {
             case R.id.action_save_kid:
 
-                if(!(editInputName.getText().toString()).equals("")) {
-                    kidName = (editInputName.getText().toString());
-                }
+                kidName = (editInputName.getText().toString());
 
-                Kid newKid = new Kid(kidName);
 
-                Toast.makeText(this, "Your Child has been edited", Toast.LENGTH_SHORT).show();
+                editedKid.setName(kidName);
+
+                Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
 
                 finish();
                 return true;
 
             case android.R.id.home:
-                Toast.makeText(this, "Make sure you saved your game!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Make sure you saved your edit!", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
 
             case R.id.action_delete_kid:
-                Toast.makeText(this, "Deleting your game!! BYE BYE ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Deleting your " + editedKid.getName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
                 manager.removeKid(position);
                 return true;

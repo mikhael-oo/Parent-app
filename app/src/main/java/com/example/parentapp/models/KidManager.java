@@ -14,6 +14,7 @@ public class KidManager implements Iterable<Kid>{
     public List<Kid> kids = new ArrayList<>();
     Kid kid;
 
+
     public List<Kid> returnGames() {
         return kids;
     }
@@ -24,14 +25,6 @@ public class KidManager implements Iterable<Kid>{
 
     public void removeKid(int i) {
         kids.remove(i);
-    }
-
-    public void changeName(String newKidName) {
-        this.kid.setName(newKidName);
-    }
-
-    public String getKidName() {
-        return this.kid.getName();
     }
 
     public List<Kid> returnKids() {
