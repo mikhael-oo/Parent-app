@@ -2,6 +2,7 @@ package com.example.parentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -32,6 +33,9 @@ public class PreTimer extends AppCompatActivity {
         });
     }
 
+    public static Intent makeIntent(Context context) {
+        return new Intent(context, PreTimer.class);
+    }
 
     private void populateMinutesGroup() {
         RadioGroup group = findViewById(R.id.minutesGroup);
