@@ -28,12 +28,15 @@ public class TimoutTimer extends AppCompatActivity {
     private TextView countDowntext;
     private Button startPauseButton;
     private Button resetButton;
+    private Button stopAlarm;
 
     private CountDownTimer countDownTimer;
 
     private boolean isTimerRunning;
     private long timeLeftInMillis = START_TIME;
     private long endTime;
+
+    MediaPlayer mp;
 
     //private EditText editTextInput; //from the pre-timer xml class
     //private Button inputButton; // from the pre-timer xml class
@@ -46,9 +49,10 @@ public class TimoutTimer extends AppCompatActivity {
         countDowntext = findViewById(R.id.countdown_text);
         startPauseButton = findViewById(R.id.start_pause_button);
         resetButton = findViewById(R.id.reset_button);
+        stopAlarm = findViewById(R.id.stopAlarm);
 
-        //editTextInput = findViewById(R.id.customNumber);
-        //inputButton = findViewById(R.id.customButton);
+
+         mp = MediaPlayer.create(getBaseContext(), R.raw.alarm);
 
         startPauseButton.setOnClickListener(view -> {
             if(isTimerRunning) {
@@ -61,6 +65,10 @@ public class TimoutTimer extends AppCompatActivity {
 
         resetButton.setOnClickListener(view -> {
             resetTimer();
+        });
+
+        stopAlarm.setOnClickListener(view -> {
+            stopSound();
         });
 
     }
@@ -121,15 +129,15 @@ public class TimoutTimer extends AppCompatActivity {
         if (isTimerRunning) {
           resetButton.setVisibility(View.INVISIBLE);
           startPauseButton.setText(R.string.pauseText);
-          //editTextInput.setVisibility(View.INVISIBLE);
-          //inputButton.setVisibility(View.INVISIBLE);
+          stopAlarm.setVisibility(View.INVISIBLE);
+
         } else {
-            //editTextInput.setVisibility(View.VISIBLE);
-            //inputButton.setVisibility(View.VISIBLE);
+
             startPauseButton.setText(R.string.startText);
 
             if (timeLeftInMillis < 1000) {
                 startPauseButton.setVisibility(View.INVISIBLE);
+                stopAlarm.setVisibility(View.VISIBLE);
             } else {
                 startPauseButton.setVisibility(View.VISIBLE);
             }
@@ -138,6 +146,7 @@ public class TimoutTimer extends AppCompatActivity {
                 resetButton.setVisibility(View.VISIBLE);
             } else {
                 resetButton.setVisibility(View.INVISIBLE);
+                stopAlarm.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -149,8 +158,11 @@ public class TimoutTimer extends AppCompatActivity {
     }
 
     private void playSound() {
-        MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.alarm);
         mp.start();
+    }
+
+    private void stopSound() {
+        mp.stop();
     }
 
     private void playVibrate() {
@@ -177,9 +189,7 @@ public class TimoutTimer extends AppCompatActivity {
         editor.putLong("endTime", endTime);
         editor.apply();
 
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
+
     }
 
     @Override

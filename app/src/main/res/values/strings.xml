@@ -5,6 +5,7 @@
     <string name="startText">START</string>
     <string name="pauseText">PAUSE</string>
     <string name="resetText">RESET</string>
+    <string name="stopAlarm">STOP ALARM</string>
 
     <string name="choosingText">CHOOSE THE TIMEOUT PERIOD</string>
     <string name="toTimer">GO TO TIMER</string>
