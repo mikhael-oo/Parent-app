@@ -20,6 +20,7 @@ import com.example.parentapp.models.KidManager;
 /*
 adds child to the the list when asked for its name
 adds to the array list
+comment
  */
 public class AddKidActivity extends AppCompatActivity {
 
