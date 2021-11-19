@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parentapp.models.Coin;
@@ -46,8 +48,12 @@ public class CoinTossAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coin_toss);
-        setTitle(getString(R.string.coin_toss_title));
 
+        ActionBar ab = getSupportActionBar();
+        assert ab != null;
+        ab.setDisplayHomeAsUpEnabled(true);
+
+        setTitle(getString(R.string.coin_toss_title));
     }
 
 
@@ -64,6 +70,23 @@ public class CoinTossAct extends AppCompatActivity {
         extraRotate.setAnimationListener(animRotateExtraListener(coinImg, rotate, extraRotate));
         startFlip(coinImg, rotate);
         counter = MAX_SPINS;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                if(flipSound.isPlaying())   {
+                    flipSound.stop();
+                }
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

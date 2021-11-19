@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,20 +8,32 @@
     tools:context=".CoinFlipMenuActivity"
     android:background="@drawable/backg">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/coin_kidName_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
+
     <EditText
+
         android:id="@+id/coin_kidName_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginEnd="80dp"
         android:layout_marginBottom="200dp"
+        android:background="#6D28015D"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:padding="8dp"
+        android:shadowColor="#FFF6D205"
         android:textColor="#FFF6D205"
+        android:textColorHint="#304FFE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
 
@@ -38,6 +51,7 @@
         android:id="@+id/coin_menu_rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#6D28015D"
         app:layout_constraintBottom_toTopOf="@+id/toss_menu_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,5 +83,37 @@
         app:layout_constraintStart_toStartOf="@+id/toss_menu_btn"
         app:layout_constraintTop_toBottomOf="@+id/toss_menu_btn"
         app:layout_constraintVertical_bias="0.123" />
+
+    <TextView
+        android:id="@+id/coin_kidName_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:background="#6D28015D"
+        android:paddingTop="5dp"
+        android:text="@string/coin_kid_s_name_tv"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/coin_kidName_editText"
+        app:layout_constraintEnd_toStartOf="@+id/coin_kidName_editText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coin_kidName_editText" />
+
+    <TextView
+        android:id="@+id/coin_kidChoice_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:background="#6D28015D"
+        android:paddingTop="20dp"
+        android:text="@string/coin_kid_s_choice_tv"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/coin_menu_rg"
+        app:layout_constraintEnd_toStartOf="@+id/coin_kidName_editText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coin_menu_rg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
