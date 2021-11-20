@@ -8,6 +8,21 @@
     tools:context=".CoinFlipMenuActivity"
     android:background="@drawable/backg">
 
+    <TextView
+        android:id="@+id/coin_turn_name"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:background="#6D28015D"
+        android:paddingTop="5dp"
+        android:text="@string/coin_kid_s_name_tv"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/coin_kidName_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

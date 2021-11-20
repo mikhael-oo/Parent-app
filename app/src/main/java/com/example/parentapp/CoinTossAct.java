@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -116,9 +117,8 @@ public class CoinTossAct extends AppCompatActivity {
     private void extractDataFromIntent() {
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra(KID_NAME_KEY);
+        kidToTossName = intent.getStringExtra(KID_NAME_KEY);
         kidChoice = intent.getBooleanExtra(KID_CHOICE_KEY, false);
-        kidToTossName = name;
     }
 
 
@@ -190,6 +190,7 @@ public class CoinTossAct extends AppCompatActivity {
         TextView result_tv = findViewById(R.id.result_tv);
         String res = isTail ? TAILS: HEADS;
         result_tv.setText(res);
+        coin.kidFlippedCoin(kidToTossName);
     }
 
 

@@ -1,10 +1,14 @@
 package com.example.parentapp.models;
 
+import android.widget.Toast;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Coin class, represents a fair coin with head and tail
@@ -15,13 +19,17 @@ import java.util.Date;
 public class Coin {
 
     private final ArrayList<String[]> history;
+    private final ArrayList<Kid> coinTurns;
 
 
     private static Coin instance = null;
 
+
     private Coin()  {
         history = new ArrayList<>(0);
+        coinTurns = new ArrayList<>(0);
     }
+
 
     public static Coin getCoinInstance()    {
 
@@ -32,17 +40,10 @@ public class Coin {
     }
 
 
-    public boolean isHistoryEmpty() {
-        return history.isEmpty();
+    public ArrayList<String[]> getHistory() {
+        return history;
     }
 
-    public int historyLength()  {
-        return history.size();
-    }
-
-    public int recordLength()   {
-        return history.get(0).length;
-    }
 
     public String[] getRecord(int i)    {
         return history.get(i);
@@ -56,8 +57,26 @@ public class Coin {
         return null;
     }
 
-    public ArrayList<String[]> getHistory() {
-        return history;
+
+    public List<Kid> getCoinTurns() {
+        return coinTurns;
+    }
+
+
+    public Kid getTurnKid() {
+        return getCoinTurns().get(0);
+    }
+
+    public boolean isHistoryEmpty() {
+        return history.isEmpty();
+    }
+
+    public int historyLength()  {
+        return history.size();
+    }
+
+    public int recordLength()   {
+        return history.get(0).length;
     }
 
 
@@ -94,7 +113,6 @@ public class Coin {
     }
 
 
-
     public void deleteFromHistory(String kidName)   {
 
         for(int i = 0; i < history.size(); i++) {
@@ -103,6 +121,55 @@ public class Coin {
                 i--;
             }
         }
+        deleteFromTurns(kidName);
     }
 
+
+    public void deleteFromTurns(String kidName)   {
+
+        for(int i = 0; i < coinTurns.size(); i++)   {
+            if(coinTurns.get(i).getName().equalsIgnoreCase(kidName))    {
+                coinTurns.remove(i);
+                i--;
+            }
+        }
+    }
+
+
+    public void updateTurns()    {
+
+        for(Kid i : KidManager.getInstance().kids)    {
+            if(!searchTurns(i.getName())) {
+                coinTurns.add(i);
+            }
+        }
+    }
+
+
+    public void kidFlippedCoin(String kidName)    {
+
+        int indexOfKid = 0;
+        for(int i = 0; i < coinTurns.size(); i++)   {
+            if(coinTurns.get(i).getName().equals(kidName))    {
+                indexOfKid = i;
+            }
+        }
+        Kid sameKid = new Kid(kidName);
+        coinTurns.add(sameKid);
+        coinTurns.remove(indexOfKid);
+    }
+
+
+
+    public boolean searchTurns(String kidName)  {
+
+        if(!coinTurns.isEmpty()) {
+            for(Kid i : coinTurns)  {
+                if(i.getName().equalsIgnoreCase(kidName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

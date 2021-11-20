@@ -12,9 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
+import com.example.parentapp.models.Kid;
+import com.example.parentapp.models.KidManager;
 
 /**
  * This Activity interacts with the user to input their desired kidName and choice of coin side
@@ -37,6 +40,14 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         setupHistoryBtn();
     }
 
+
+
+    @Override
+    public void onResume()   {
+        super.onResume();
+        coin.updateTurns();
+        setupKidTurnTv();
+    }
 
 
     @Override
@@ -111,6 +122,14 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    private void setupKidTurnTv() {
+        Kid kid = coin.getTurnKid();
+        TextView kidTurn = findViewById(R.id.coin_turn_name);
+        Toast.makeText(this, coin.getCoinTurns().size() + " " + coin.getHistory().size() , Toast.LENGTH_LONG).show();
+        kidTurn.setText(kid.getName() + "'s Turn to Toss");
     }
 
 
