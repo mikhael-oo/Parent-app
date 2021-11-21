@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+import com.example.parentapp.models.TaskManager;
 
 /*
 Edits the child's name and supports deletion of the child as well, it takes a bundle of the
@@ -26,6 +27,7 @@ child's name
 public class EditKidActivity extends AppCompatActivity {
 
     private Coin coin = Coin.getCoinInstance();
+    private TaskManager taskManager = TaskManager.getInstance();
     private KidManager manager;
     private EditText editInputName;
     private String kidName;

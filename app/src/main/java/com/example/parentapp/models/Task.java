@@ -11,7 +11,7 @@ public class Task {
     KidManager manager = KidManager.getInstance();
     Random randomChild = new Random();
     private int nextChild;
-    private Task firstAssignee;
+    private String firstAssignee;
 
     public Task(String startName) {
         taskName = startName;
@@ -22,24 +22,28 @@ public class Task {
         else {
             nextChild = randomChild.nextInt(manager.returnKids().size());
             taskKid = manager.returnKids().get(nextChild).getName();
-            if(manager.returnKids().isEmpty()) {
-                firstAssignee = new Task(manager.returnKids().get(nextChild).getName());
-            }
+//            if((manager.returnKids().get(0)) != null) {
+//                firstAssignee = taskKid;
+//            }
         }
 
     }
+
     public void nextAssignee() {
         if(manager.returnKids().isEmpty()) {
             taskKid = "No Child to assign to";
             return;
         }
-        if(manager.returnKids().get(nextChild+1) == null) {
-            taskKid = firstAssignee.getTaskKid();
-        }
+        try {
             nextChild += 1;
             taskKid = manager.returnKids().get(nextChild).getName();
+        } catch (IndexOutOfBoundsException e) {
+            nextChild = -1;
+            taskKid = manager.returnKids().get(0).getName();
+        }
 
     }
+
     public void setTaskName(String newName) {
         this.taskName = newName;
     }
