@@ -12,12 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
-import com.example.parentapp.models.KidManager;
 
 /**
  * This Activity interacts with the user to input their desired kidName and choice of coin side
@@ -38,14 +38,15 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         setTitle(getString(R.string.coin_toss_menu_title));
         setupTossMenuBtn();
         setupHistoryBtn();
+        setupKidSelectBtn();
     }
-
 
 
     @Override
     public void onResume()   {
         super.onResume();
         coin.updateTurns();
+        // remember to move this line to create
         setupKidTurnTv();
     }
 
@@ -78,17 +79,18 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if((heads.isChecked() || tails.isChecked())) {
 
-                    String kidName = kidNameEd.getText().toString();
+                    Switch noSelection = findViewById(R.id.coin_no_kid_toss_switch);
+                    String kidName;
+                    if(!noSelection.isChecked()) {
+                        kidName = coin.getTurnKid().getName();
+                    }
+                    else{
+                        kidName = null;
+                    }
                     boolean choice = heads.isChecked();
-
-                    if(!isThisKidTurn(kidNameEd, coin.getLastRecord())) {
-                        Intent intent = CoinTossAct.makeIntent(CoinFlipMenuActivity.this, kidName, choice);
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(CoinFlipMenuActivity.this, "Its not " + kidName + "'s Turn"
-                                , Toast.LENGTH_LONG).show();
-                    }
+                    coin.kidFlippedCoin(kidName);
+                    Intent intent = CoinTossAct.makeIntent(CoinFlipMenuActivity.this, kidName, choice);
+                    startActivity(intent);
                 }
 
                 else    {
@@ -97,17 +99,6 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-
-
-
-    private boolean isThisKidTurn(EditText kidNameEd, String[] lastRecord) {
-        if(!coin.isHistoryEmpty()) {
-            String kidName = kidNameEd.getText().toString();
-            return kidName.equalsIgnoreCase(lastRecord[0]);
-        }
-        return false;
     }
 
 
@@ -128,8 +119,22 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
     private void setupKidTurnTv() {
         Kid kid = coin.getTurnKid();
         TextView kidTurn = findViewById(R.id.coin_turn_name);
-        Toast.makeText(this, coin.getCoinTurns().size() + " " + coin.getHistory().size() , Toast.LENGTH_LONG).show();
+        Toast.makeText(this, coin.getTurnQueue().size() + " " + coin.getHistory().size() , Toast.LENGTH_LONG).show();
         kidTurn.setText(kid.getName() + "'s Turn to Toss");
+    }
+
+
+
+    private void setupKidSelectBtn() {
+
+        Button selectKid = findViewById(R.id.coin_manual_kid_select_btn);
+        selectKid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = CoinManualSelectActivity.makeIntent(CoinFlipMenuActivity.this);
+                startActivity(intent);
+            }
+        });
     }
 
 

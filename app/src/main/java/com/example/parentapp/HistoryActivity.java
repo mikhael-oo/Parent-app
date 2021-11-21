@@ -97,7 +97,6 @@ public class HistoryActivity extends AppCompatActivity {
             EditListElems(historyView, record);
             return historyView;
         }
-
     }
 
 

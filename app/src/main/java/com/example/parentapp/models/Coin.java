@@ -1,13 +1,10 @@
 package com.example.parentapp.models;
 
-import android.widget.Toast;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,7 +16,7 @@ import java.util.List;
 public class Coin {
 
     private final ArrayList<String[]> history;
-    private final ArrayList<Kid> coinTurns;
+    private final ArrayList<Kid> turnQueue;
 
 
     private static Coin instance = null;
@@ -27,7 +24,7 @@ public class Coin {
 
     private Coin()  {
         history = new ArrayList<>(0);
-        coinTurns = new ArrayList<>(0);
+        turnQueue = new ArrayList<>(0);
     }
 
 
@@ -58,13 +55,13 @@ public class Coin {
     }
 
 
-    public List<Kid> getCoinTurns() {
-        return coinTurns;
+    public List<Kid> getTurnQueue() {
+        return turnQueue;
     }
 
 
     public Kid getTurnKid() {
-        return getCoinTurns().get(0);
+        return getTurnQueue().get(0);
     }
 
     public boolean isHistoryEmpty() {
@@ -90,24 +87,37 @@ public class Coin {
 
     public void addToHistory(String kidName, String kidChoice, String result) {
 
-        String[] newEntry = new String[4];
-        newEntry[0] = kidName;
-        newEntry[1] = kidChoice;
+        if(kidName != null && kidChoice != null && result != null) {
+            String[] newEntry = new String[4];
+            newEntry[0] = kidName;
+            newEntry[1] = kidChoice;
 
-        DateFormat df = new SimpleDateFormat("MMM dd @ hh:mm");
-        Date now = Calendar.getInstance().getTime();
-        newEntry[2] = df.format(now);
-        newEntry[3] = result;
-        history.add(newEntry);
+            DateFormat df = new SimpleDateFormat("MMM dd @ hh:mm");
+            Date now = Calendar.getInstance().getTime();
+            newEntry[2] = df.format(now);
+            newEntry[3] = result;
+            history.add(newEntry);
+        }
+    }
+
+
+    public void addToStartOfQueue(String kidName)     {
+
+        if(kidName != null) {
+            Kid kid = new Kid(kidName);
+            getTurnQueue().add(0, kid);
+        }
     }
 
 
 
     public void editHistory(String orgName, String newName) {
 
-        for(String[] kid : history)   {
-            if(kid[0].equalsIgnoreCase(orgName)) {
-                kid[0] = newName;
+        if(orgName != null && newName != null) {
+            for (String[] kid : history) {
+                if (kid[0].equalsIgnoreCase(orgName)) {
+                    kid[0] = newName;
+                }
             }
         }
     }
@@ -115,22 +125,26 @@ public class Coin {
 
     public void deleteFromHistory(String kidName)   {
 
-        for(int i = 0; i < history.size(); i++) {
-            if(history.get(i)[0].equalsIgnoreCase(kidName)) {
-                history.remove(i);
-                i--;
+        if(kidName != null) {
+            for (int i = 0; i < history.size(); i++) {
+                if (history.get(i)[0].equalsIgnoreCase(kidName)) {
+                    history.remove(i);
+                    i--;
+                }
             }
+            deleteFromTurns(kidName);
         }
-        deleteFromTurns(kidName);
     }
 
 
     public void deleteFromTurns(String kidName)   {
 
-        for(int i = 0; i < coinTurns.size(); i++)   {
-            if(coinTurns.get(i).getName().equalsIgnoreCase(kidName))    {
-                coinTurns.remove(i);
-                i--;
+        if(kidName != null) {
+            for (int i = 0; i < turnQueue.size(); i++) {
+                if (turnQueue.get(i).getName().equalsIgnoreCase(kidName)) {
+                    turnQueue.remove(i);
+                    i--;
+                }
             }
         }
     }
@@ -140,7 +154,7 @@ public class Coin {
 
         for(Kid i : KidManager.getInstance().kids)    {
             if(!searchTurns(i.getName())) {
-                coinTurns.add(i);
+                turnQueue.add(i);
             }
         }
     }
@@ -148,23 +162,25 @@ public class Coin {
 
     public void kidFlippedCoin(String kidName)    {
 
-        int indexOfKid = 0;
-        for(int i = 0; i < coinTurns.size(); i++)   {
-            if(coinTurns.get(i).getName().equals(kidName))    {
-                indexOfKid = i;
+        if(kidName != null) {
+            int indexOfKid = 0;
+            for (int i = 0; i < turnQueue.size(); i++) {
+                if (turnQueue.get(i).getName().equals(kidName)) {
+                    indexOfKid = i;
+                }
             }
+            Kid sameKid = new Kid(kidName);
+            turnQueue.add(sameKid);
+            turnQueue.remove(indexOfKid);
         }
-        Kid sameKid = new Kid(kidName);
-        coinTurns.add(sameKid);
-        coinTurns.remove(indexOfKid);
     }
 
 
 
     public boolean searchTurns(String kidName)  {
 
-        if(!coinTurns.isEmpty()) {
-            for(Kid i : coinTurns)  {
+        if(!turnQueue.isEmpty() && kidName != null) {
+            for(Kid i : turnQueue)  {
                 if(i.getName().equalsIgnoreCase(kidName)) {
                     return true;
                 }
