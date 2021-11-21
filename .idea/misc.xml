@@ -16,7 +16,9 @@
         <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/activity_timer.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/history_view.xml" value="0.22780797101449277" />
         <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/kid_list_item.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_add_task.xml" value="0.264" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_coin_toss.xml" value="0.1716485507246377" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_edit_task.xml" value="0.264" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_kid.xml" value="0.264" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_kid_add.xml" value="0.264" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_kid_edit.xml" value="0.264" />
@@ -24,9 +26,14 @@
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_kid_start.xml" value="0.21693840579710144" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_menu.xml" value="0.264" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_task_list.xml" value="0.264" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activty_edit_task.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/kid_list_item.xml" value="0.2" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/task_list_item.xml" value="0.264" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/menu/menu_add_task.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/menu/menu_delete_kid.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/menu/menu_save_kid.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/menu/menu_save_task.xml" value="0.23703703703703705" />
       </map>
     </option>
   </component>

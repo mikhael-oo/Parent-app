@@ -46,6 +46,15 @@
         <activity
             android:name=".TimoutTimer"
             android:exported="true" />
+        <activity
+            android:name=".TaskListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddTaskActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EditTaskActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

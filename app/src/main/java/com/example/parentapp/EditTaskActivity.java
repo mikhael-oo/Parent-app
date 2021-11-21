@@ -3,8 +3,11 @@ package com.example.parentapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,47 +19,52 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+import com.example.parentapp.models.Task;
+import com.example.parentapp.models.TaskManager;
 
-/*
-Edits the child's name and supports deletion of the child as well, it takes a bundle of the
-position of the child and sets it to the array position of the kidmanager and allows access to the
-child's name
- */
+public class EditTaskActivity extends AppCompatActivity {
 
-public class EditKidActivity extends AppCompatActivity {
-
-    private Coin coin = Coin.getCoinInstance();
-    private KidManager manager;
-    private EditText editInputName;
-    private String kidName;
+    private TaskManager manager;
+    private EditText editInputTaskName;
+    private String taskName;
     private int position;
-    private Kid editedKid;
+    private Task editedTask;
 
 
     public static Intent makeIntent(Context context) {
-        return new Intent(context, EditKidActivity.class);
+        return new Intent(context, EditTaskActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kid_edit);
+        setContentView(R.layout.activity_edit_task);
         ActionBar ab = getSupportActionBar();
         assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
-        Toolbar toolbar = findViewById(R.id.toolbarEdit);
+        Toolbar toolbar = findViewById(R.id.toolbarEditTask);
 
-        manager = KidManager.getInstance();
+        manager = TaskManager.getInstance();
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        position = b.getInt("Kid Index");
-        editedKid = manager.returnKids().get(position);
+        position = b.getInt("Task Index");
+        editedTask = manager.returnTasks().get(position);
 
-        getSupportActionBar().setTitle("Edit " + editedKid.getName() + "'s name!");
+        getSupportActionBar().setTitle("Edit " + editedTask.getTaskName());
 
-        editInputName = (EditText) findViewById(R.id.editTaskNameInput);
-        editInputName.setText(editedKid.getName());
+        editInputTaskName = (EditText) findViewById(R.id.editTaskNameInput);
+        editInputTaskName.setText(editedTask.getTaskName());
+
+        Button checkTaskComplete = (Button) findViewById(R.id.taskCompleteCheck);
+        checkTaskComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                editedTask.nextAssignee();
+                Log.i("MyApp", "Task has been completed");
+            }
+        });
 
     }
 
@@ -71,13 +79,10 @@ public class EditKidActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_save_kid:
-
-                kidName = (editInputName.getText().toString());
-                coin.editHistory(editedKid.getName(), kidName);
-                editedKid.setName(kidName);
+                taskName = (editInputTaskName.getText().toString());
+                editedTask.setTaskName(taskName);
 
                 Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
-
                 finish();
                 return true;
 
@@ -87,10 +92,9 @@ public class EditKidActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_delete_kid:
-                Toast.makeText(this, "Deleting your " + editedKid.getName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Deleting your " + editedTask.getTaskName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
-                coin.deleteFromHistory(kidName);
-                manager.removeKid(position);
+                manager.removeTask(position);
                 return true;
 
             default:
@@ -98,5 +102,3 @@ public class EditKidActivity extends AppCompatActivity {
         }
     }
 }
-
-

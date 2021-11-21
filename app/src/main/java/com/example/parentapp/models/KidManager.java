@@ -14,10 +14,6 @@ public class KidManager implements Iterable<Kid>{
     public List<Kid> kids = new ArrayList<>();
 
 
-    public List<Kid> returnGames() {
-        return kids;
-    }
-
     public void addKid(Kid newKid) {
         kids.add(newKid);
     }

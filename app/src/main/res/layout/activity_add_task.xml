@@ -11,37 +11,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Enter the name:"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"
+        android:text="Enter the Task Name:"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFF6D205"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editChildTitle"
-        android:textAlignment="center"
-        android:textColor="#FFF6D205"
-        android:background="#ED28015D"
-        android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
+        app:layout_constraintTop_toBottomOf="@+id/editChildTitle" />
 
     <TextView
         android:id="@+id/editChildTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="408dp"
-        android:text="Your Kid"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textAlignment="center"
-        android:textColor="#FFF6D205"
+        android:layout_marginBottom="560dp"
         android:background="#ED28015D"
         android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
+        android:fontFeatureSettings="50px"
+        android:text="Your Kid"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#FFF6D205"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/nameInput"
+        android:id="@+id/taskNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -53,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.087"
+        app:layout_constraintVertical_bias="0.124"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -67,7 +67,7 @@
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarAdd"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/colorPrimary"

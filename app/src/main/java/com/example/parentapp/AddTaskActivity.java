@@ -15,44 +15,39 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+import com.example.parentapp.models.Task;
+import com.example.parentapp.models.TaskManager;
 
-/*
-adds child to the the list when asked for its name
-adds to the array list
-comment
- */
-public class AddKidActivity extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity {
 
-    KidManager manager;
-    EditText inputKidName;
-    String kidName;
+    TaskManager manager;
+    EditText inputTaskName;
+    String taskName;
 
     public static Intent makeIntent(Context context) {
-        return new Intent(context, AddKidActivity.class);
+        return new Intent(context, AddTaskActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kid_add);
+        setContentView(R.layout.activity_add_task);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        setTitle(getString(R.string.add_kid_title));
+        setTitle("Add new Task!");
 
-
-        manager = KidManager.getInstance();
+        manager = TaskManager.getInstance();
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        //did this in edit as well
-        Toolbar toolbar = findViewById(R.id.toolbarAdd);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
-        inputKidName = (EditText) findViewById(R.id.nameInput);
+        inputTaskName = (EditText) findViewById(R.id.taskNameInput);
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_save_kid,menu);
+        getMenuInflater().inflate(R.menu.menu_save_task,menu);
         return true;
     }
 
@@ -60,21 +55,20 @@ public class AddKidActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.action_save_kid:
+            case R.id.action_save_task:
 
+                taskName = (inputTaskName.getText().toString());
 
-                kidName = (inputKidName.getText().toString());
+                Task newTask = new Task(taskName);
+                manager.addTask(newTask);
 
-                Kid newKid = new Kid(kidName);
-                manager.addKid(newKid);
-
-                Toast.makeText(this, newKid.getName() +" has been added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, newTask.getTaskName() +" has been added", Toast.LENGTH_SHORT).show();
 
                 finish();
                 return true;
 
             case android.R.id.home:
-                Toast.makeText(this, "Make sure you saved your kid!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Make sure you saved your task!", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
 

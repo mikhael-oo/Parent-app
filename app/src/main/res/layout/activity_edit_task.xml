@@ -6,44 +6,44 @@
     android:layout_height="match_parent"
     android:background="@drawable/backg">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Enter the name:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editChildTitle"
-        android:textAlignment="center"
-        android:textColor="#FFF6D205"
-        android:background="#ED28015D"
-        android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
 
     <TextView
-        android:id="@+id/editChildTitle"
+        android:id="@+id/titleChangeTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="408dp"
-        android:text="Your Kid"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"
+        android:text="Change your task!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFF6D205"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        android:textAlignment="center"
-        android:textColor="#FFF6D205"
-        android:background="#ED28015D"
-        android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
 
-    <EditText
-        android:id="@+id/nameInput"
+    <TextView
+        android:id="@+id/editTaskTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"
+        android:text="Current Task"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#FFF6D205"
+        app:layout_constraintBottom_toTopOf="@+id/titleChangeTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.848" />
+
+    <EditText
+        android:id="@+id/editTaskNameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -52,28 +52,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.087"
+        app:layout_constraintTop_toBottomOf="@+id/titleChangeTask"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
-        app:layout_constraintBottom_toTopOf="@+id/editChildTitle"
+        android:layout_marginBottom="215dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTaskTitle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarAdd"
+            android:id="@+id/toolbarEditTask"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             tools:ignore="MissingConstraints" />
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <Button
+        android:id="@+id/taskCompleteCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Task Completed?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTaskNameInput"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

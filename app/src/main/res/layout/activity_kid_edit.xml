@@ -42,7 +42,7 @@
         android:fontFeatureSettings="50px"/>
 
     <EditText
-        android:id="@+id/editNameInput"
+        android:id="@+id/editTaskNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -69,7 +69,7 @@
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarEdit"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"

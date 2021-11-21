@@ -8,6 +8,7 @@
     android:background="@drawable/backg"
     >
 
+
     <Button
         android:id="@+id/addChoice"
         android:layout_width="162dp"
@@ -23,9 +24,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editChoice"
-        app:layout_constraintVertical_bias="0.078"
-        />
-
+        app:layout_constraintVertical_bias="0.078" />
 
     <TextView
         android:id="@+id/mainTitle"
@@ -33,19 +32,19 @@
         android:layout_height="61dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"
         android:shadowColor="#FFFFFF"
         android:text="Choose what you would like to do with your kids!"
         android:textAlignment="center"
+        android:textColor="#FFF6D205"
         android:textSize="20sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/editChoice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815"
-        android:textColor="#FFF6D205"
-        android:background="#ED28015D"
-        android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
+        app:layout_constraintVertical_bias="0.471" />
 
     <Button
         android:id="@+id/editChoice"
@@ -62,7 +61,24 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.578" />
+
+    <Button
+        android:id="@+id/taskChoice"
+        android:layout_width="162dp"
+        android:layout_height="93dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Check your tasks!"
+        app:layout_constraintBottom_toTopOf="@+id/editChoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainTitle"
+        app:layout_constraintVertical_bias="0.557" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

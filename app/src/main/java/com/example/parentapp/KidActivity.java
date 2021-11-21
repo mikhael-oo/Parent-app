@@ -35,6 +35,15 @@ public class KidActivity extends AppCompatActivity {
     }
 
     public void setupAllButtons() {
+        Button childrenTaskBtn = findViewById(R.id.taskChoice);
+        childrenTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = TaskListActivity.makeIntent(KidActivity.this);
+                startActivity(intent);
+            }
+        });
+
         Button childrenEditBtn = findViewById(R.id.editChoice);
         childrenEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
