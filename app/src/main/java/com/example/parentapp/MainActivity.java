@@ -77,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
             }
         });
+
+
+        Button helpBtn = findViewById(R.id.helpButton);
+        helpBtn.setOnClickListener(view -> {
+            Intent intent = HelpScreen.makeIntent(MainActivity.this);
+            startActivity(intent);
+        });
     }
 
 
