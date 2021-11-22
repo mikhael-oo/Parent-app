@@ -59,7 +59,8 @@ public class AddKidActivity extends AppCompatActivity {
         manager = KidManager.getInstance();
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        //did this in edit as well
+        Toolbar toolbar = findViewById(R.id.toolbarAdd);
 
         inputKidName = (EditText) findViewById(R.id.nameInput);
         kidImageButton = findViewById(R.id.kidImageButton);
