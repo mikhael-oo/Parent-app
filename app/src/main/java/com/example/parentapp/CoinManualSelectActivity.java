@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -104,12 +105,14 @@ public class CoinManualSelectActivity extends AppCompatActivity {
         name.setBackground(gd);
         name.setTextColor(GOLD_COLOR);
 
+        ImageView kidImage = queueView.findViewById(R.id.coin_queue_kidImage);
+        kidImage.setImageBitmap(kid.getImage());
+
         TextView pos_tv = queueView.findViewById(R.id.queue_pos_tv);
         pos++;
         pos_tv.setText("" + pos);
         pos_tv.setBackground(gd);
         pos_tv.setTextColor(GOLD_COLOR);
-        // add a portrait
     }
 
 
@@ -124,7 +127,7 @@ public class CoinManualSelectActivity extends AppCompatActivity {
 
                 Kid clickedKid = coin.getTurnQueue().get(position);
                 coin.deleteFromTurns(clickedKid.getName());
-                coin.addToStartOfQueue(clickedKid.getName());
+                coin.addToStartOfQueue(clickedKid.getName(), clickedKid.getImage());
                 finish();
             }
         });

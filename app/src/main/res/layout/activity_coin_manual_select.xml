@@ -10,22 +10,24 @@
 
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" >
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <ListView
         android:id="@+id/queue_list"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/queue_title_tv" />
 
 
     <TextView
@@ -44,30 +46,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/queue_header_kidName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="Kid's Name"
-        android:textAlignment="center"
-        android:textColor="#FFF6D205"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/queue_list"
-        app:layout_constraintTop_toBottomOf="@+id/queue_title_tv" />
-
-    <TextView
-        android:id="@+id/queue_header_pos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:text="Turn's Number"
-        android:textColor="#FFF6D205"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/queue_title_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

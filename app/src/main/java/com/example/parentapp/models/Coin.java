@@ -1,5 +1,7 @@
 package com.example.parentapp.models;
 
+import android.graphics.Bitmap;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -101,10 +103,10 @@ public class Coin {
     }
 
 
-    public void addToStartOfQueue(String kidName)     {
+    public void addToStartOfQueue(String kidName, Bitmap img)     {
 
         if(kidName != null) {
-            Kid kid = new Kid(kidName, null);
+            Kid kid = new Kid(kidName, img);
             getTurnQueue().add(0, kid);
         }
     }
@@ -160,7 +162,7 @@ public class Coin {
     }
 
 
-    public void kidFlippedCoin(String kidName)    {
+    public void kidFlippedCoin(String kidName, Bitmap img)    {
 
         if(kidName != null) {
             int indexOfKid = 0;
@@ -169,7 +171,7 @@ public class Coin {
                     indexOfKid = i;
                 }
             }
-            Kid sameKid = new Kid(kidName, null);
+            Kid sameKid = new Kid(kidName, img);
             turnQueue.add(sameKid);
             turnQueue.remove(indexOfKid);
         }

@@ -19,7 +19,7 @@
         android:textAlignment="center"
         android:textColor="#FFF6D205"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/coin_manual_kid_select_btn"
+        app:layout_constraintBottom_toTopOf="@+id/coin_menu_kidImage"
         app:layout_constraintEnd_toEndOf="@+id/coin_manual_kid_select_btn"
         app:layout_constraintStart_toStartOf="@+id/coin_manual_kid_select_btn" />
 
@@ -116,5 +116,15 @@
         app:layout_constraintEnd_toEndOf="@+id/coin_menu_rg"
         app:layout_constraintStart_toStartOf="@+id/coin_menu_rg"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <ImageView
+        android:id="@+id/coin_menu_kidImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/coin_manual_kid_select_btn"
+        app:layout_constraintEnd_toEndOf="@+id/coin_manual_kid_select_btn"
+        app:layout_constraintStart_toStartOf="@+id/coin_manual_kid_select_btn"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

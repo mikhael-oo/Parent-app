@@ -13,28 +13,26 @@
         android:layout_height="wrap_content"
         android:layout_margin="8sp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="serif"
-        android:padding="8sp"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/queue_kidName_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="serif"
         android:padding="8sp"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/queue_kidName_tv" />
+
+    <TextView
+        android:id="@+id/queue_kidName_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="serif"
+        android:padding="8sp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toEndOf="@+id/queue_name_header"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -42,6 +40,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="313dp" />
+        app:layout_constraintGuide_begin="283dp" />
+
+    <ImageView
+        android:id="@+id/coin_queue_kidImage"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/queue_kidPic_tv"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/queue_name_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#D2F6D205"
+        android:text="Name: "
+        android:textColor="#28015D"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/queue_pos_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queue_turn_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#B2F6D205"
+        android:text="Turn#: "
+        android:textColor="#28015D"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/queue_pos_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/queue_pos_tv" />
+
+    <TextView
+        android:id="@+id/queue_kidPic_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#B2F6D205"
+        android:text="Picture"
+        android:textColor="#28015D"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

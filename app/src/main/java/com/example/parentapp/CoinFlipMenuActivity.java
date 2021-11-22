@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -80,14 +82,17 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
 
                     Switch noSelection = findViewById(R.id.coin_no_kid_toss_switch);
                     String kidName;
+                    Bitmap kidImg;
                     if(!noSelection.isChecked()) {
                         kidName = coin.getTurnKid().getName();
+                        kidImg = coin.getTurnKid().getImage();
                     }
                     else{
                         kidName = null;
+                        kidImg = null;
                     }
                     boolean choice = heads.isChecked();
-                    coin.kidFlippedCoin(kidName);
+                    coin.kidFlippedCoin(kidName, kidImg);
                     Intent intent = CoinTossAct.makeIntent(CoinFlipMenuActivity.this, kidName, choice);
                     startActivity(intent);
                 }
@@ -120,6 +125,8 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         TextView kidTurn = findViewById(R.id.coin_turn_name);
         Toast.makeText(this, coin.getTurnQueue().size() + " " + coin.getHistory().size() , Toast.LENGTH_LONG).show();
         kidTurn.setText(kid.getName() + "'s Turn to Toss");
+        ImageView kidImageView = findViewById(R.id.coin_menu_kidImage);
+        kidImageView.setImageBitmap(kid.getImage());
     }
 
 

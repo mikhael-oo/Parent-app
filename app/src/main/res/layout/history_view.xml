@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backg">
+
+    <TextView
+        android:id="@+id/history_header_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time_history_header"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/history_date"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/history_result_img"
+        app:layout_constraintTop_toTopOf="@+id/history_date" />
+
+    <TextView
+        android:id="@+id/history_header_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choice_history_header"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/history_choice"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/history_result_img"
+        app:layout_constraintTop_toBottomOf="@+id/history_name" />
+
+    <TextView
+        android:id="@+id/history_header_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/name_history_header"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/history_name"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/history_result_img"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/history_name"
@@ -15,8 +56,6 @@
         android:padding="8sp"
         android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,61 +64,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8sp"
-        android:layout_marginTop="16dp"
         android:fontFamily="serif"
         android:padding="8sp"
         android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/history_name" />
 
     <TextView
         android:id="@+id/history_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8sp"
-        android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:padding="8sp"
         android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/history_choice" />
 
     <ImageView
         android:id="@+id/history_result_img"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="95dp"
+        android:layout_height="91dp"
         android:layout_margin="8sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        android:contentDescription="@string/an_icon_representing_the_result_of_coin_toss"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        android:contentDescription="@string/an_icon_representing_the_result_of_coin_toss" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="57dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="152dp" />
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="267dp" />
+        app:layout_constraintGuide_begin="303dp" />
+
+    <ImageView
+        android:id="@+id/history_kidpic_iv"
+        android:layout_width="70dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="193dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

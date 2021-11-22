@@ -2,6 +2,7 @@ package com.example.parentapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parentapp.models.Coin;
+import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
 /**
@@ -190,7 +192,13 @@ public class CoinTossAct extends AppCompatActivity {
         TextView result_tv = findViewById(R.id.result_tv);
         String res = isTail ? TAILS: HEADS;
         result_tv.setText(res);
-        coin.kidFlippedCoin(kidToTossName);
+        Bitmap kidImage = null;
+        for(Kid i : KidManager.getInstance().kids) {
+            if(kidToTossName.equalsIgnoreCase(i.getName())) {
+                kidImage = i.getImage();
+            }
+        }
+        coin.kidFlippedCoin(kidToTossName, kidImage);
     }
 
 

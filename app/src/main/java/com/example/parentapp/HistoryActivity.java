@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.parentapp.models.Coin;
+import com.example.parentapp.models.Kid;
+import com.example.parentapp.models.KidManager;
 
 
 /**
@@ -126,7 +128,16 @@ public class HistoryActivity extends AppCompatActivity {
         else{
             result.setImageResource(R.drawable.history_lost_img);
         }
-
+        ImageView kidPic = historyView.findViewById(R.id.history_kidpic_iv);
+        Kid kid = null;
+        for(Kid i : KidManager.getInstance().kids)  {
+            if(record[0].equalsIgnoreCase(i.getName())) {
+                kid = i;
+            }
+        }
+        if(kid != null) {
+            kidPic.setImageBitmap(kid.getImage());
+        }
     }
 
 
