@@ -7,6 +7,14 @@
     android:background="@drawable/backg"
     tools:context=".CoinTossAct">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
+
     <TextView
         android:id="@+id/result_tv"
         android:layout_width="match_parent"

@@ -3,6 +3,9 @@
     package="com.example.parentapp">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParentApp">
+        <activity
+            android:name=".HelpScreen"
+            android:exported="false" />
         <activity
             android:name=".HistoryActivity"
             android:exported="true" />
@@ -47,13 +53,7 @@
             android:name=".TimoutTimer"
             android:exported="true" />
         <activity
-            android:name=".TaskListActivity"
-            android:exported="true" />
-        <activity
-            android:name=".AddTaskActivity"
-            android:exported="true" />
-        <activity
-            android:name=".EditTaskActivity"
+            android:name=".CoinManualSelectActivity"
             android:exported="true" />
     </application>
 

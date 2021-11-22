@@ -30,4 +30,14 @@
     <string name="kid_menu_title">Kid Configuration</string>
     <string name="kid_menu_activity_title">List of Kids!</string>
     <string name="timeout_timer_title">Timeout Timer</string>
+
+    <string name="help_screen_title">Help Page</string>
+    <string name="coin_kid_s_name_tv">Kid\'s Name:</string>
+    <string name="coin_kid_s_choice_tv">Kid\'s Choice:</string>
+
+    <string name="kid_image_text">SELECT IMAGE</string>
+
+    <string name="about_title">About App</string>
+    <string name="authors_title">Authors</string>
+    <string name="copyright_title">Copyrights Information</string>
 </resources>

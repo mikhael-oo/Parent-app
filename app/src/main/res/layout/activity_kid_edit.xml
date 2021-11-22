@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backg">
@@ -11,35 +12,34 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"
         android:text="Rename your Child!"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFF6D205"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45"
-        android:textColor="#FFF6D205"
-        android:background="#ED28015D"
-        android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
+        app:layout_constraintVertical_bias="0.518" />
 
     <TextView
         android:id="@+id/editChildTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current Child"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.426"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351"
-        android:textColor="#FFF6D205"
         android:background="#ED28015D"
         android:fontFamily="serif"
-        android:fontFeatureSettings="50px"/>
+        android:fontFeatureSettings="50px"
+        android:text="Current Child"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#FFF6D205"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.116" />
 
     <EditText
         android:id="@+id/editTaskNameInput"
@@ -75,6 +75,17 @@
             android:background="?attr/colorPrimary"
             tools:ignore="MissingConstraints" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/editChildImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editChildTitle"
+        tools:srcCompat="@tools:sample/avatars" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

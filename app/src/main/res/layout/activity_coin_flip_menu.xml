@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,41 +8,48 @@
     tools:context=".CoinFlipMenuActivity"
     android:background="@drawable/backg">
 
-    <EditText
-        android:id="@+id/coin_kidName_editText"
+    <TextView
+        android:id="@+id/coin_turn_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="200dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="#6D28015D"
+        android:paddingTop="5dp"
+        android:text="@string/coin_kid_s_name_tv"
+        android:textAlignment="center"
         android:textColor="#FFF6D205"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/coin_manual_kid_select_btn"
+        app:layout_constraintEnd_toEndOf="@+id/coin_manual_kid_select_btn"
+        app:layout_constraintStart_toStartOf="@+id/coin_manual_kid_select_btn" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="Autofill,LabelFor,SpeakableTextPresentCheck" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/toss_menu_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/toss"
+        app:layout_constraintBottom_toTopOf="@+id/coin_menu_history_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coin_kidName_editText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/coin_menu_rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#6D28015D"
         app:layout_constraintBottom_toTopOf="@+id/toss_menu_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coin_kidName_editText">
+        app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
             android:id="@+id/coin_menu_head_rb"
@@ -62,12 +70,51 @@
         android:id="@+id/coin_menu_history_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
         android:text="@string/history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/toss_menu_btn"
         app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="@+id/toss_menu_btn"
-        app:layout_constraintTop_toBottomOf="@+id/toss_menu_btn"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintStart_toStartOf="@+id/toss_menu_btn" />
+
+    <TextView
+        android:id="@+id/coin_kidChoice_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:background="#6D28015D"
+        android:paddingTop="20dp"
+        android:text="@string/coin_kid_s_choice_tv"
+        android:textAlignment="center"
+        android:textColor="#FFF6D205"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/coin_menu_rg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coin_menu_rg" />
+
+    <Button
+        android:id="@+id/coin_manual_kid_select_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Select Different Kid"
+        app:layout_constraintBottom_toTopOf="@+id/coin_no_kid_toss_switch"
+        app:layout_constraintEnd_toEndOf="@+id/coin_no_kid_toss_switch"
+        app:layout_constraintStart_toStartOf="@+id/coin_no_kid_toss_switch" />
+
+    <Switch
+        android:id="@+id/coin_no_kid_toss_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:shadowColor="#C53D3D"
+        android:text="Nobody"
+        android:textColor="#FFF6D205"
+        android:textColorHighlight="#671E1E"
+        android:textColorHint="#7F1212"
+        app:layout_constraintBottom_toTopOf="@+id/coin_menu_rg"
+        app:layout_constraintEnd_toEndOf="@+id/coin_menu_rg"
+        app:layout_constraintStart_toStartOf="@+id/coin_menu_rg"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
