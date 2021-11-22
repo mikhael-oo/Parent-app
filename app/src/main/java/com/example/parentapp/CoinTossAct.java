@@ -191,7 +191,7 @@ public class CoinTossAct extends AppCompatActivity {
             String theChoice = kidChoice ? HEADS : TAILS;
             String outcome = isKidWinner ? WON : LOST;
             coin.addToHistory(kidToTossName, theChoice, outcome);
-            setCoinSharedPrefsData();
+            SharedPrefsConfig.setCoinHistorySharedPrefsData(this, coin);
         }
         TextView result_tv = findViewById(R.id.result_tv);
         String res = isTail ? TAILS: HEADS;
@@ -203,9 +203,8 @@ public class CoinTossAct extends AppCompatActivity {
             }
         }
         coin.kidFlippedCoin(kidToTossName, kidImage);
+        SharedPrefsConfig.setCoinQueueSharedPrefs(this, coin);
     }
-
-
 
 
 
@@ -236,19 +235,6 @@ public class CoinTossAct extends AppCompatActivity {
 
     private void playSound(MediaPlayer s) {
         if(!s.isPlaying())   s.start();
-    }
-
-
-
-
-    private void setCoinSharedPrefsData() {
-
-        Gson gson = new Gson();
-        String historyGsonString = gson.toJson(coin.getHistory());
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(MainActivity.COIN_HISTORY_SHAREDPREF_KEY, historyGsonString);
-        editor.apply();
     }
 
 

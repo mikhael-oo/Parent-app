@@ -48,7 +48,6 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
     public void onResume()   {
         super.onResume();
         coin.updateTurns();
-        // remember to move this line to create
         setupKidTurnTv();
     }
 

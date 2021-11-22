@@ -16,8 +16,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.parentapp.models.Coin;
+import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -32,7 +34,6 @@ import java.util.ArrayList;
  */
 public class MainActivity extends AppCompatActivity {
 
-    public static final String COIN_HISTORY_SHAREDPREF_KEY = "History_Key";
     private KidManager kidManager = KidManager.getInstance();
     private Coin coin = Coin.getCoinInstance();
 
@@ -40,14 +41,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayList<String[]> historyListShared = getCoinSharedPrefsData();
-        if(historyListShared != null) {
-            for (String[] i : historyListShared) {
-                coin.addToHistory(i[0], i[1], i[3]);
-            }
-        }
+        setupCoinSharedPrefData();
         setupAllButtons();
     }
+
 
     public static Intent makeIntent(Context context){
         return new Intent(context, MainActivity.class);
@@ -102,13 +99,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList<String[]> getCoinSharedPrefsData() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String historyJsonString = prefs.getString(COIN_HISTORY_SHAREDPREF_KEY, null);
-        Gson gson = new Gson();
-        Type type = new TypeToken<ArrayList<String[]>>()    {}.getType();
-        ArrayList<String[]> savedHistory = gson.fromJson(historyJsonString, type);
-        return savedHistory;
 
+
+    private void setupCoinSharedPrefData() {
+
+        ArrayList<String[]> historyListShared = SharedPrefsConfig.getCoinHistorySharedPrefsData(this);
+        if(historyListShared != null) {
+            for (String[] i : historyListShared) {
+                coin.addToHistory(i[0], i[1], i[3]);
+            }
+        }
+        ArrayList<Kid> coinQueue = SharedPrefsConfig.getCoinQueueSharedPrefsData(this);
+        if(coinQueue != null)   {
+            for(Kid i : coinQueue)  {
+                coin.getTurnQueue().add(i);
+            }
+        }
     }
 }
