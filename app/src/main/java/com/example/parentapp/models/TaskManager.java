@@ -22,15 +22,6 @@ public class TaskManager {
         return tasks;
     }
 
-    public boolean search(String name)   {
-
-        for(int i = 0; i < tasks.size(); i++)    {
-            if(tasks.get(i).getTaskName().equalsIgnoreCase(name))
-                return true;
-        }
-        return false;
-    }
-
 
     private static TaskManager managerInstance = null;
 

@@ -82,7 +82,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 taskName = (editInputTaskName.getText().toString());
                 editedTask.setTaskName(taskName);
 
-                Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Your task has been edited", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
 

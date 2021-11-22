@@ -11,7 +11,6 @@ public class Task {
     KidManager manager = KidManager.getInstance();
     Random randomChild = new Random();
     private int nextChild;
-    private String firstAssignee;
 
     public Task(String startName) {
         taskName = startName;
@@ -22,9 +21,6 @@ public class Task {
         else {
             nextChild = randomChild.nextInt(manager.returnKids().size());
             taskKid = manager.returnKids().get(nextChild).getName();
-//            if((manager.returnKids().get(0)) != null) {
-//                firstAssignee = taskKid;
-//            }
         }
 
     }
