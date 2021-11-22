@@ -3,7 +3,9 @@ package com.example.parentapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 
 import android.content.Context;
@@ -15,7 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.KidManager;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 /**
  * This class displays the screen where you choose
@@ -24,15 +32,22 @@ import com.example.parentapp.models.KidManager;
  */
 public class MainActivity extends AppCompatActivity {
 
+    public static final String COIN_HISTORY_SHAREDPREF_KEY = "History_Key";
     private KidManager kidManager = KidManager.getInstance();
+    private Coin coin = Coin.getCoinInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ArrayList<String[]> historyListShared = getCoinSharedPrefsData();
+        if(historyListShared != null) {
+            for (String[] i : historyListShared) {
+                coin.addToHistory(i[0], i[1], i[3]);
+            }
+        }
         setupAllButtons();
     }
-
 
     public static Intent makeIntent(Context context){
         return new Intent(context, MainActivity.class);
@@ -87,4 +102,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private ArrayList<String[]> getCoinSharedPrefsData() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String historyJsonString = prefs.getString(COIN_HISTORY_SHAREDPREF_KEY, null);
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<String[]>>()    {}.getType();
+        ArrayList<String[]> savedHistory = gson.fromJson(historyJsonString, type);
+        return savedHistory;
+
+    }
 }

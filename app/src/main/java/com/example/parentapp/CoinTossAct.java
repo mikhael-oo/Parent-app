@@ -2,9 +2,11 @@ package com.example.parentapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+import com.google.gson.Gson;
 
 /**
  * This activity is simply an animation demonstration of the coin flip
@@ -188,6 +191,7 @@ public class CoinTossAct extends AppCompatActivity {
             String theChoice = kidChoice ? HEADS : TAILS;
             String outcome = isKidWinner ? WON : LOST;
             coin.addToHistory(kidToTossName, theChoice, outcome);
+            setCoinSharedPrefsData();
         }
         TextView result_tv = findViewById(R.id.result_tv);
         String res = isTail ? TAILS: HEADS;
@@ -233,6 +237,20 @@ public class CoinTossAct extends AppCompatActivity {
     private void playSound(MediaPlayer s) {
         if(!s.isPlaying())   s.start();
     }
+
+
+
+
+    private void setCoinSharedPrefsData() {
+
+        Gson gson = new Gson();
+        String historyGsonString = gson.toJson(coin.getHistory());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(MainActivity.COIN_HISTORY_SHAREDPREF_KEY, historyGsonString);
+        editor.apply();
+    }
+
 
 
     public static Intent makeIntent(Context context, String kidName, boolean choice)   {
