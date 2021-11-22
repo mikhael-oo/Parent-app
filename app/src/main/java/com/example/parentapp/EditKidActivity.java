@@ -69,6 +69,7 @@ public class EditKidActivity extends AppCompatActivity {
         editKidImage = findViewById(R.id.editChildImage);
         editKidImage.setImageBitmap(editedKid.getImage());
         editInputName.setText(editedKid.getName());
+        kidImageSelected = editedKid.getImage();
 
         editKidImage.setOnClickListener(view -> {
             selectImage(EditKidActivity.this);
@@ -92,7 +93,10 @@ public class EditKidActivity extends AppCompatActivity {
 
                 coin.editHistory(editedKid.getName(), kidName);
                 editedKid.setName(kidName);
+
+
                 editedKid.setImage(kidImageSelected);
+                editKidImage.setImageBitmap(editedKid.getImage());
 
                 Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
 
@@ -107,7 +111,7 @@ public class EditKidActivity extends AppCompatActivity {
             case R.id.action_delete_kid:
                 Toast.makeText(this, "Deleting your " + editedKid.getName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
-                coin.deleteFromHistory(kidName);
+                coin.deleteFromHistory(editedKid.getName());
                 manager.removeKid(position);
                 return true;
 
