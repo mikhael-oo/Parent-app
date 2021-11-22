@@ -71,7 +71,6 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
         Button toss = findViewById(R.id.toss_menu_btn);
         RadioButton heads = findViewById(R.id.coin_menu_head_rb);
         RadioButton tails = findViewById(R.id.coin_menu_tail_rb);
-        EditText kidNameEd = findViewById(R.id.coin_kidName_editText);
 
 
         toss.setOnClickListener(new View.OnClickListener() {

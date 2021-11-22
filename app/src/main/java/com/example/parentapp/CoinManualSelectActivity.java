@@ -74,6 +74,7 @@ public class CoinManualSelectActivity extends AppCompatActivity {
     }
 
 
+
     private class MyListAdapter extends ArrayAdapter<Kid>  {
         public MyListAdapter()  {
             super(CoinManualSelectActivity.this, R.layout.queue_view, coin.getTurnQueue());
@@ -108,6 +109,7 @@ public class CoinManualSelectActivity extends AppCompatActivity {
         pos_tv.setText("" + pos);
         pos_tv.setBackground(gd);
         pos_tv.setTextColor(GOLD_COLOR);
+        // add a portrait
     }
 
 
