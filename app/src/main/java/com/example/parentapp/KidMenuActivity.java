@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,6 +94,8 @@ public class KidMenuActivity extends AppCompatActivity {
             Kid currentKid = manager.returnKids().get(position);
 
             @SuppressLint("ResourceType") TextView kidInfo = (TextView) itemView.findViewById(R.id.kidText);
+            @SuppressLint("ResourceType")ImageView kidMiniImage = (ImageView) itemView.findViewById(R.id.kidMiniImage);
+            kidMiniImage.setImageBitmap(currentKid.getImage());
             kidInfo.setText(currentKid.getName());
 
             return itemView;
