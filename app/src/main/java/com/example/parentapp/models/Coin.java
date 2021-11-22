@@ -104,7 +104,7 @@ public class Coin {
     public void addToStartOfQueue(String kidName)     {
 
         if(kidName != null) {
-            Kid kid = new Kid(kidName);
+            Kid kid = new Kid(kidName, null);
             getTurnQueue().add(0, kid);
         }
     }
@@ -169,7 +169,7 @@ public class Coin {
                     indexOfKid = i;
                 }
             }
-            Kid sameKid = new Kid(kidName);
+            Kid sameKid = new Kid(kidName, null);
             turnQueue.add(sameKid);
             turnQueue.remove(indexOfKid);
         }
