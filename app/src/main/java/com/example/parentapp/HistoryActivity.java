@@ -1,11 +1,14 @@
 package com.example.parentapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -37,6 +40,11 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        ActionBar ab = getSupportActionBar();
+        assert ab != null;
+        ab.setDisplayHomeAsUpEnabled(true);
+
         setTitle(getString(R.string.history_activity_title));
     }
 
@@ -46,6 +54,21 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onStart()    {
         super.onStart();
         populateHistoryList();
+    }
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
@@ -74,7 +97,6 @@ public class HistoryActivity extends AppCompatActivity {
             EditListElems(historyView, record);
             return historyView;
         }
-
     }
 
 

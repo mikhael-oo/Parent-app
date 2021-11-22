@@ -52,6 +52,9 @@
         <activity
             android:name=".TimoutTimer"
             android:exported="true" />
+        <activity
+            android:name=".CoinManualSelectActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
