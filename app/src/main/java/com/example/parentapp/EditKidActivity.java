@@ -24,6 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+import com.example.parentapp.models.TaskManager;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -38,6 +39,7 @@ public class EditKidActivity extends AppCompatActivity {
 
     private Coin coin = Coin.getCoinInstance();
     private KidManager manager;
+    private TaskManager taskManager = TaskManager.getInstance();
     private EditText editInputName;
     private ImageView editKidImage;
     private String kidName;
@@ -95,6 +97,7 @@ public class EditKidActivity extends AppCompatActivity {
                 kidName = (editInputName.getText().toString());
 
                 coin.editHistory(editedKid.getName(), kidName);
+                taskManager.editTasks(editedKid.getName(), kidName);
                 editedKid.setName(kidName);
 
 
@@ -115,6 +118,7 @@ public class EditKidActivity extends AppCompatActivity {
                 Toast.makeText(this, "Deleting your " + editedKid.getName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
                 coin.deleteFromHistory(editedKid.getName());
+                taskManager.deleteFromTasks(editedKid.getName());
                 manager.removeKid(position);
                 SharedPrefsConfig.setSavedKidsSharedPrefs(this, manager);
                 return true;

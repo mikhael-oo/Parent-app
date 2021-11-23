@@ -65,7 +65,6 @@ public class AddKidActivity extends AppCompatActivity {
         kidImage.setOnClickListener(view -> {
             selectImage(AddKidActivity.this);
         });
-
     }
 
     @Override

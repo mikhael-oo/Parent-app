@@ -25,6 +25,30 @@ public class TaskManager {
         return tasks;
     }
 
+    public void editTasks(String orgName, String newName) {
+
+        if(orgName != null && newName != null) {
+            for (Task task : tasks) {
+                if (task.taskKid.equalsIgnoreCase(orgName)) {
+                    task.taskKid = newName;
+                }
+            }
+        }
+    }
+
+
+    public void deleteFromTasks(String kidName)   {
+
+        if(kidName != null) {
+            for(int i = 0; i < tasks.size(); i++) {
+                if(tasks.get(i).taskKid.equalsIgnoreCase(kidName))     {
+                    tasks.get(i).taskKid = "Kid Deleted";
+                }
+            }
+        }
+    }
+
+
 
     private static TaskManager managerInstance = null;
 
