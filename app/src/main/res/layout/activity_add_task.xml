@@ -31,7 +31,7 @@
         android:background="#ED28015D"
         android:fontFamily="serif"
         android:fontFeatureSettings="50px"
-        android:text="Your Kid"
+        android:text="Your Task!"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#FFF6D205"
