@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import java.util.Random;
 
-/*
+/**
 task class that holds singular tasks  for the children to do
  */
 public class Task {

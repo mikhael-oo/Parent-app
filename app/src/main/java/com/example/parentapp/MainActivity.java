@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Button;
@@ -28,6 +30,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Base64;
 
 /**
  * This class displays the screen where you choose
@@ -137,6 +140,23 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Kid> kids = SharedPrefsConfig.getKidsSharedPrefsData(this);
         if(kids != null)    {
             KidManager.getInstance().kids = kids;
+            for(Kid i : kidManager) {
+                i.setImage(null);
+            }
+            //setupKidImageSharedPrefData();
+        }
+    }
+
+
+    private void setupKidImageSharedPrefData()  {
+
+        ArrayList<String> images = SharedPrefsConfig.getKidImageSharedPrefsData(this);
+        if(images != null) {
+            for (int i = 0; i < images.size(); i++) {
+                byte[] imageBytes = android.util.Base64.decode(images.get(i), android.util.Base64.DEFAULT);
+                Bitmap decodeImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                KidManager.getInstance().kids.get(i).setImage(decodeImage);
+            }
         }
     }
 }

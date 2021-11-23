@@ -22,6 +22,11 @@ import com.example.parentapp.models.KidManager;
 import com.example.parentapp.models.Task;
 import com.example.parentapp.models.TaskManager;
 
+
+/**
+ * This Activity edits the clicked task from task menu
+ * user can change its name only. the assigne is random
+ */
 public class EditTaskActivity extends AppCompatActivity {
 
     private TaskManager manager;

@@ -41,4 +41,6 @@
     <string name="authors_title">Authors</string>
     <string name="copyright_title">Copyrights Information</string>
     <string name="coin_queue_string">Coin\'s Queue</string>
+    <string name="help_sources_string">https://www.youtube.com/watch?v=uce70PsO4xA\nhttps://www.youtube.com/watch?v=TsASX0ZK9ak \nhttps://github.com/Cassendra4/ImageCaptureExample \nhttps://www.youtube.com/watch?v=uce70PsO4xA</string>
+    <string name="add_new_task_string">Add new Task!</string>
 </resources>

@@ -10,7 +10,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+/**
+ * The help Activity provides information about the Application,
+ * authors and the sources
+ */
 public class HelpScreen extends AppCompatActivity {
+
+    private final String BACK_STRING = "Back to Main Screen";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,7 @@ public class HelpScreen extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case android.R.id.home:
-                Toast.makeText(this, "Back to Main Screen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, BACK_STRING, Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
 

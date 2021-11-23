@@ -13,6 +13,11 @@ import android.widget.Toast;
 
 import com.example.parentapp.models.Timer;
 
+
+/**
+ * A short menu before setting the timer off
+ * this menu gives the user the options to select
+ */
 public class PreTimer extends AppCompatActivity {
 
     private final String NOT_EMPTY = "No Empty Field Input Allowed";

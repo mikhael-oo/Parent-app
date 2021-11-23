@@ -34,7 +34,7 @@ public class AddTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        setTitle("Add new Task!");
+        setTitle(getString(R.string.add_new_task_string));
 
         manager = TaskManager.getInstance();
         Intent intent = getIntent();

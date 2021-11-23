@@ -10,7 +10,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:background="#ED28015D"
         android:fontFamily="serif"
         android:fontFeatureSettings="50px"
@@ -21,13 +21,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kidImageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/kidImage" />
 
     <TextView
         android:id="@+id/editChildTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="624dp"
         android:background="#ED28015D"
         android:fontFamily="serif"
         android:fontFeatureSettings="50px"
@@ -37,8 +36,27 @@
         android:textColor="#FFF6D205"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <TextView
+        android:id="@+id/click_picture_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
+        android:fontFeatureSettings="50px"
+        android:text="Click the Picture to Add"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#FFF6D205"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/kidImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editChildTitle" />
 
     <EditText
         android:id="@+id/nameInput"
@@ -53,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.086"
+        app:layout_constraintVertical_bias="0.071"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.appbar.AppBarLayout
@@ -80,24 +98,13 @@
         android:id="@+id/kidImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="56dp"
         android:src="@drawable/images"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editChildTitle"
         tools:srcCompat="@drawable/images" />
-
-    <Button
-        android:id="@+id/kidImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/kid_image_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kidImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

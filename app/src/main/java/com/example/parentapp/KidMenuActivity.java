@@ -22,7 +22,7 @@ import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
 
-/*
+/**
 KidMenu lists every child in the KidManager arraylist and allows click on
 the children to access their edit screen.
 Updates whenever changes are made in terms of edits and deletions

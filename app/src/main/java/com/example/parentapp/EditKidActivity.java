@@ -28,7 +28,7 @@ import com.example.parentapp.models.KidManager;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-/*
+/**
 Edits the child's name and supports deletion of the child as well, it takes a bundle of the
 position of the child and sets it to the array position of the kidmanager and allows access to the
 child's name

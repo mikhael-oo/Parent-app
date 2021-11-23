@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,7 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
-/*
+/**
 adds child to the the list when asked for its name
 adds to the array list
 comment
@@ -35,9 +34,7 @@ public class AddKidActivity extends AppCompatActivity {
     KidManager manager;
     EditText inputKidName;
     String kidName;
-    Button kidImageButton;
     ImageView kidImage;
-    String kidImageStr;
     Bitmap kidImageSelected;
 
 
@@ -59,11 +56,10 @@ public class AddKidActivity extends AppCompatActivity {
         manager = KidManager.getInstance();
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
-        //did this in edit as well
+
         Toolbar toolbar = findViewById(R.id.toolbarAdd);
 
         inputKidName = (EditText) findViewById(R.id.nameInput);
-        kidImageButton = findViewById(R.id.kidImageButton);
         kidImage = findViewById(R.id.kidImage);
 
         kidImage.setOnClickListener(view -> {
@@ -143,6 +139,7 @@ public class AddKidActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK && data != null) {
                         kidImageSelected = (Bitmap) data.getExtras().get("data");
                         kidImage.setImageBitmap(kidImageSelected);
+                        SharedPrefsConfig.setKidPictureSharedPref(this, manager);
                     }
 
                     break;
@@ -160,6 +157,7 @@ public class AddKidActivity extends AppCompatActivity {
                                 String picturePath = cursor.getString(columnIndex);
                                 kidImageSelected = BitmapFactory.decodeFile(picturePath);
                                 kidImage.setImageBitmap(kidImageSelected);
+                                SharedPrefsConfig.setKidPictureSharedPref(this, manager);
                                 cursor.close();
                             }
                         }

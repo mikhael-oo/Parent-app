@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * This Class manages a list of Tasks which will be assigned to a single kid
+ */
 public class TaskManager {
     public List<Task> tasks = new ArrayList<>();
 
