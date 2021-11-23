@@ -40,7 +40,7 @@ public class Task {
             taskKid = manager.returnKids().get(nextChild).getName();
             taskKidImage = manager.returnKids().get(nextChild).getImage();
         } catch (IndexOutOfBoundsException e) {
-            nextChild = -1;
+            nextChild = 0;
             taskKid = manager.returnKids().get(0).getName();
             taskKidImage = manager.returnKids().get(0).getImage();
         }

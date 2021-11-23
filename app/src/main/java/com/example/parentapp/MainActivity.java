@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
+import com.example.parentapp.models.Task;
+import com.example.parentapp.models.TaskManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -41,7 +43,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         setupCoinSharedPrefData();
+        setupTaskSharedPrefData();
+        setupKidsSharedPrefData();
+
         setupAllButtons();
     }
 
@@ -100,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     private void setupCoinSharedPrefData() {
 
         ArrayList<String[]> historyListShared = SharedPrefsConfig.getCoinHistorySharedPrefsData(this);
@@ -114,6 +119,24 @@ public class MainActivity extends AppCompatActivity {
             for(Kid i : coinQueue)  {
                 coin.getTurnQueue().add(i);
             }
+        }
+    }
+
+
+
+    private void setupTaskSharedPrefData() {
+        ArrayList<Task> taskList = SharedPrefsConfig.getSavedTasksSharedPrefsData(this);
+        if(taskList != null)    {
+            TaskManager.getInstance().tasks = taskList;
+        }
+    }
+
+
+
+    private void setupKidsSharedPrefData() {
+        ArrayList<Kid> kids = SharedPrefsConfig.getKidsSharedPrefsData(this);
+        if(kids != null)    {
+            KidManager.getInstance().kids = kids;
         }
     }
 }

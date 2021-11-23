@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_add_task.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/activity_help_screen.xml" value="0.264" />
-        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/queue_view.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/arjun/ParentApp1/app/src/main/res/layout/task_list_item.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/activity_add_task.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/activity_coin_flip_menu.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/activity_coin_manual_select.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/activity_history.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/history_view.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/17789/AndroidStudioProjects/ParentApp/app/src/main/res/layout/queue_view.xml" value="0.20697463768115942" />
         <entry key="app/src/main/res/layout/activity_help_screen.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_kid_add.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_kid_edit.xml" value="0.165" />

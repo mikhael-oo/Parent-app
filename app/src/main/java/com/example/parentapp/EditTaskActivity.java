@@ -81,6 +81,7 @@ public class EditTaskActivity extends AppCompatActivity {
             case R.id.action_save_kid:
                 taskName = (editInputTaskName.getText().toString());
                 editedTask.setTaskName(taskName);
+                SharedPrefsConfig.setSavedTasksSharedPrefs(EditTaskActivity.this, manager);
 
                 Toast.makeText(this, "Your task has been edited", Toast.LENGTH_SHORT).show();
                 finish();
@@ -95,6 +96,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 Toast.makeText(this, "Deleting your " + editedTask.getTaskName() + "!! BYE BYE ", Toast.LENGTH_SHORT).show();
                 finish();
                 manager.removeTask(position);
+                SharedPrefsConfig.setSavedTasksSharedPrefs(EditTaskActivity.this, manager);
                 return true;
 
             default:

@@ -122,7 +122,6 @@ public class CoinFlipMenuActivity extends AppCompatActivity {
     private void setupKidTurnTv() {
         Kid kid = coin.getTurnKid();
         TextView kidTurn = findViewById(R.id.coin_turn_name);
-        Toast.makeText(this, coin.getTurnQueue().size() + " " + coin.getHistory().size() , Toast.LENGTH_LONG).show();
         kidTurn.setText(kid.getName() + "'s Turn to Toss");
         ImageView kidImageView = findViewById(R.id.coin_menu_kidImage);
         kidImageView.setImageBitmap(kid.getImage());

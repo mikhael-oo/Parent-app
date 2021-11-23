@@ -22,6 +22,10 @@ import com.example.parentapp.models.Kid;
 
 import java.util.ArrayList;
 
+/**
+ * This Activity handle the change in the queue of the coin toss
+ * the selected Kid will be moved up in the queue
+ */
 public class CoinManualSelectActivity extends AppCompatActivity {
 
     public static final int TEXTVIEW_PURPLE_BG = 0xED28015D;
@@ -40,7 +44,7 @@ public class CoinManualSelectActivity extends AppCompatActivity {
         assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
 
-        setTitle("Coin's Queue");
+        setTitle(getString(R.string.coin_queue_string));
     }
 
 

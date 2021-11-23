@@ -61,6 +61,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 Task newTask = new Task(taskName);
                 manager.addTask(newTask);
+                SharedPrefsConfig.setSavedTasksSharedPrefs(AddTaskActivity.this, manager);
 
                 Toast.makeText(this, newTask.getTaskName() +" has been added", Toast.LENGTH_SHORT).show();
 

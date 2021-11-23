@@ -102,7 +102,7 @@ public class EditKidActivity extends AppCompatActivity {
                 editKidImage.setImageBitmap(editedKid.getImage());
 
                 Toast.makeText(this, "Your kid has been edited", Toast.LENGTH_SHORT).show();
-
+                SharedPrefsConfig.setSavedKidsSharedPrefs(this, manager);
                 finish();
                 return true;
 
@@ -116,6 +116,7 @@ public class EditKidActivity extends AppCompatActivity {
                 finish();
                 coin.deleteFromHistory(editedKid.getName());
                 manager.removeKid(position);
+                SharedPrefsConfig.setSavedKidsSharedPrefs(this, manager);
                 return true;
 
             default:

@@ -90,7 +90,7 @@ public class AddKidActivity extends AppCompatActivity {
 
                 Kid newKid = new Kid(kidName, kidImageSelected);
                 manager.addKid(newKid);
-
+                SharedPrefsConfig.setSavedKidsSharedPrefs(this, manager);
                 Toast.makeText(this, newKid.getName() +" has been added", Toast.LENGTH_SHORT).show();
 
                 finish();
