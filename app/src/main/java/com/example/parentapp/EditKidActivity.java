@@ -25,6 +25,9 @@ import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 /*
 Edits the child's name and supports deletion of the child as well, it takes a bundle of the
 position of the child and sets it to the array position of the kidmanager and allows access to the
@@ -160,24 +163,21 @@ public class EditKidActivity extends AppCompatActivity {
 
                     break;
                 case 1:
-                    if (resultCode == RESULT_OK && data != null) {
-                        Uri selectedImage = data.getData();
-                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                        if (selectedImage != null) {
-                            Cursor cursor = getContentResolver().query(selectedImage,
-                                    filePathColumn, null, null, null);
-                            if (cursor != null) {
-                                cursor.moveToFirst();
-
-                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                                String picturePath = cursor.getString(columnIndex);
-                                kidImageSelected = BitmapFactory.decodeFile(picturePath);
-                                editKidImage.setImageBitmap(kidImageSelected);
-                                cursor.close();
-                            }
+                    if (resultCode == RESULT_OK) {
+                        try {
+                            final Uri imageUri = data.getData();
+                            final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                            kidImageSelected = BitmapFactory.decodeStream(imageStream);
+                            editKidImage.setImageBitmap(kidImageSelected);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                            Toast.makeText(EditKidActivity.this, "Something went wrong", Toast.LENGTH_LONG).show();
                         }
 
+                    }else {
+                        Toast.makeText(EditKidActivity.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
                     }
+
                     break;
             }
         }
