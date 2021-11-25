@@ -128,7 +128,8 @@ public class TaskListActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 Toast.makeText(this, BYE_BYE, Toast.LENGTH_SHORT).show();
-                finish();
+                Intent returnIntent = KidActivity.makeIntent(TaskListActivity.this);
+                startActivity(returnIntent);
                 return true;
 
             default:
