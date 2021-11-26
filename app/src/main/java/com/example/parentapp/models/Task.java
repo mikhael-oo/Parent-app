@@ -54,6 +54,8 @@ public class Task {
             nextChild = 0;
             taskKid = manager.returnKids().get(0).getName();
             taskKidImage = manager.returnKids().get(0).getImage();
+            Kid newHistory = new Kid(taskKid, taskKidImage);
+            historyManager.add(newHistory);
         }
 
     }
@@ -85,6 +87,7 @@ public class Task {
     public List<Kid> returnTaskHistory() {
         return historyManager;
     }
+
 
     private static Task taskInstance = null;
 

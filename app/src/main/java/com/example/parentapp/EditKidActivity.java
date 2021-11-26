@@ -120,6 +120,7 @@ public class EditKidActivity extends AppCompatActivity {
                 coin.deleteFromHistory(editedKid.getName());
                 taskManager.deleteFromTasks(editedKid.getName());
                 manager.removeKid(position);
+                taskManager.deleteFromHistory(editedKid.getName());
                 SharedPrefsConfig.setSavedKidsSharedPrefs(this, manager);
                 return true;
 
