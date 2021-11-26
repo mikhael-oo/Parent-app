@@ -98,7 +98,9 @@ public class EditKidActivity extends AppCompatActivity {
 
                 coin.editHistory(editedKid.getName(), kidName);
                 taskManager.editTasks(editedKid.getName(), kidName);
+                taskManager.editKidHistory(editedKid.getName(), kidName);
                 editedKid.setName(kidName);
+
 
 
                 editedKid.setImage(kidImageSelected);

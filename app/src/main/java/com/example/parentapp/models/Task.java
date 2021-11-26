@@ -1,9 +1,14 @@
 package com.example.parentapp.models;
 
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.RequiresApi;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,8 +25,10 @@ public class Task {
     Random randomChild = new Random();
     private int nextChild;
 
+
     public List<Kid> historyManager = new ArrayList<>();
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public Task(String startName) {
         taskName = startName;
         if (manager.returnKids().isEmpty()) {
@@ -33,12 +40,14 @@ public class Task {
             taskKid = manager.returnKids().get(nextChild).getName();
             taskKidImage = manager.returnKids().get(nextChild).getImage();
             Kid newHistory = new Kid(taskKid, taskKidImage);
+            newHistory.setDate();
             historyManager.add(newHistory);
         }
 
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextAssignee() {
         if (manager.returnKids().isEmpty()) {
             taskKid = "No Child to assign to";
@@ -49,12 +58,15 @@ public class Task {
             taskKid = manager.returnKids().get(nextChild).getName();
             taskKidImage = manager.returnKids().get(nextChild).getImage();
             Kid newHistory = new Kid(taskKid, taskKidImage);
+            newHistory.setDate();
             historyManager.add(newHistory);
-        } catch (IndexOutOfBoundsException e) {
+        }
+        catch (IndexOutOfBoundsException e) {
             nextChild = 0;
             taskKid = manager.returnKids().get(0).getName();
             taskKidImage = manager.returnKids().get(0).getImage();
             Kid newHistory = new Kid(taskKid, taskKidImage);
+            newHistory.setDate();
             historyManager.add(newHistory);
         }
 
@@ -87,6 +99,8 @@ public class Task {
     public List<Kid> returnTaskHistory() {
         return historyManager;
     }
+
+    //from https://mkyong.com/java8/java-8-how-to-format-localdatetime/
 
 
     private static Task taskInstance = null;

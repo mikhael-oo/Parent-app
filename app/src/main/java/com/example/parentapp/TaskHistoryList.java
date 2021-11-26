@@ -3,6 +3,7 @@ package com.example.parentapp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -28,6 +30,7 @@ public class TaskHistoryList extends AppCompatActivity {
     Task thisTask;
     TaskManager manager = TaskManager.getInstance();
     private int position;
+
 
     public static Intent makeIntent(Context context) {
         return new Intent(context, TaskHistoryList.class);
@@ -76,6 +79,8 @@ public class TaskHistoryList extends AppCompatActivity {
         public MyListAdapter() {
             super(TaskHistoryList.this, R.layout.history_kid_item, thisTask.returnTaskHistory());
         }
+        @SuppressLint("SetTextI18n")
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View itemView = convertView;
@@ -85,9 +90,11 @@ public class TaskHistoryList extends AppCompatActivity {
             Kid historyKid = thisTask.returnTaskHistory().get(position);
 
             @SuppressLint("ResourceType") TextView historyKidName = (TextView) itemView.findViewById(R.id.historyKidText);
-            historyKidName.setText(historyKid.getName());
+            historyKidName.setText(historyKid.getName() + ": " + historyKid.getDate());
+
             @SuppressLint("ResourceType")ImageView historyKidImage = (ImageView) itemView.findViewById(R.id.historyKidMiniImage);
             historyKidImage.setImageBitmap(historyKid.getImage());
+
 
 
             return itemView;

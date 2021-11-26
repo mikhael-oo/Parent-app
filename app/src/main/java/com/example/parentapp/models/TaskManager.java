@@ -50,6 +50,19 @@ public class TaskManager {
         }
     }
 
+    public void editKidHistory(String originalName, String editName) {
+
+        if (originalName != null) {
+            for (Task t : tasks) {
+                for (Kid k : t.returnTaskHistory()) {
+                    if (k.getName().equalsIgnoreCase(originalName)) {
+                        k.setName(editName);
+                    }
+                }
+            }
+        }
+    }
+
 
     public void deleteFromHistory(String kidName)   {
 
