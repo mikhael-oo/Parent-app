@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/time_at_25"
+        android:id="@+id/time_at_25"
+        />
+    <item
+        android:title="@string/time_at_50"
+        android:id="@+id/time_at_50"
+        />
+    <item
+        android:title="@string/time_at_75"
+        android:id="@+id/time_at_75"/>
+    <item
+        android:title="@string/time_at_100"
+        android:id="@+id/time_at_100"
+        />
+    <item
+        android:title="@string/time_at_200"
+        android:id="@+id/time_at_200"
+        />
+    <item
+        android:title="@string/time_at_300"
+        android:id="@+id/time_at_300"
+        />
+    <item
+        android:title="@string/time_at_400"
+        android:id="@+id/time_at_400"
+        />
+</menu>

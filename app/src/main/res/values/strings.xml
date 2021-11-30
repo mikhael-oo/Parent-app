@@ -43,4 +43,13 @@
     <string name="coin_queue_string">Coin\'s Queue</string>
     <string name="help_sources_string">https://www.youtube.com/watch?v=uce70PsO4xA\nhttps://www.youtube.com/watch?v=TsASX0ZK9ak \nhttps://github.com/Cassendra4/ImageCaptureExample \nhttps://www.youtube.com/watch?v=uce70PsO4xA</string>
     <string name="add_new_task_string">Add new Task!</string>
+
+    <string name="time_at_25">Timer at 25%</string>
+    <string name="time_at_50">Timer at 50%</string>
+    <string name="time_at_75">Timer at 75%</string>
+    <string name="time_at_100">Timer at 100%</string>
+    <string name="time_at_200">Timer at 200%</string>
+    <string name="time_at_300">Timer at 300%</string>
+    <string name="time_at_400">Timer at 400%</string>
+
 </resources>
