@@ -25,7 +25,6 @@ public class Task {
     Random randomChild = new Random();
     private int nextChild;
 
-
     public List<Kid> historyManager = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.O)
