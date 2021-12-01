@@ -71,7 +71,8 @@ public class KidActivity extends AppCompatActivity {
         switch(item.getItemId()) {
             case android.R.id.home:
                 Toast.makeText(this, "Bye bye!", Toast.LENGTH_SHORT).show();
-                finish();
+                Intent intent = MainActivity.makeIntent(KidActivity.this);
+                startActivity(intent);
                 return true;
 
             default:

@@ -37,12 +37,39 @@ public class TaskManager {
     }
 
 
-    public void deleteFromTasks(String kidName)   {
+    public void deleteFromTasks(String kidName) {
+
+        if (kidName != null) {
+            for (Task t : tasks) {
+                for (Kid k : t.returnTaskHistory()) {
+                    if (k.getName().equalsIgnoreCase(kidName)) {
+                        k.setName("Kid Deleted");
+                    }
+                }
+            }
+        }
+    }
+
+    public void editKidHistory(String originalName, String editName) {
+
+        if (originalName != null) {
+            for (Task t : tasks) {
+                for (Kid k : t.returnTaskHistory()) {
+                    if (k.getName().equalsIgnoreCase(originalName)) {
+                        k.setName(editName);
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void deleteFromHistory(String kidName)   {
 
         if(kidName != null) {
             for(int i = 0; i < tasks.size(); i++) {
-                if(tasks.get(i).taskKid.equalsIgnoreCase(kidName))     {
-                    tasks.get(i).taskKid = "Kid Deleted";
+                if(tasks.get(i).returnTaskHistory().get(i).getName().equalsIgnoreCase(kidName))     {
+                    tasks.get(i).returnTaskHistory().get(i).setName("Kid Deleted");
                 }
             }
         }

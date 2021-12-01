@@ -24,6 +24,9 @@ import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.Task;
 import com.example.parentapp.models.TaskManager;
 
+/*
+This activity shows the tasklist for every task the parent makes, and it displays the child and the child's photo who is up to do it next.
+ */
 public class TaskListActivity extends AppCompatActivity {
 
     public static final String TASK_KEY_INDEX = "Task Index";
@@ -128,7 +131,8 @@ public class TaskListActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 Toast.makeText(this, BYE_BYE, Toast.LENGTH_SHORT).show();
-                finish();
+                Intent returnIntent = KidActivity.makeIntent(TaskListActivity.this);
+                startActivity(returnIntent);
                 return true;
 
             default:

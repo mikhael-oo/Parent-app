@@ -3,6 +3,7 @@ package com.example.parentapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +30,7 @@ import com.example.parentapp.models.TaskManager;
  */
 public class EditTaskActivity extends AppCompatActivity {
 
+    private static final String TASK_KEY_INDEX = "Task Key";
     private TaskManager manager;
     private EditText editInputTaskName;
     private String taskName;
@@ -77,6 +79,7 @@ public class EditTaskActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_delete_kid,menu);
         getMenuInflater().inflate(R.menu.menu_save_kid,menu);
+        getMenuInflater().inflate(R.menu.menu_check_task_history,menu);
         return true;
     }
 
@@ -102,6 +105,15 @@ public class EditTaskActivity extends AppCompatActivity {
                 finish();
                 manager.removeTask(position);
                 SharedPrefsConfig.setSavedTasksSharedPrefs(EditTaskActivity.this, manager);
+                return true;
+
+            case R.id.action_check_task_history:
+                Toast.makeText(this, "Checking history of " + editedTask.getTaskName() + "...", Toast.LENGTH_SHORT).show();
+                Intent checkHistoryIntent = new Intent(EditTaskActivity.this, TaskHistoryList.class);
+                Bundle taskHistory = new Bundle();
+                taskHistory.putInt("Given Task", position);
+                checkHistoryIntent.putExtras(taskHistory);
+                startActivity(checkHistoryIntent);
                 return true;
 
             default:
