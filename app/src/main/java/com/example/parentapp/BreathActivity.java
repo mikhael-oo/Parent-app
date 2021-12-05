@@ -125,6 +125,7 @@ public class BreathActivity extends AppCompatActivity {
                 if(checkBreaths()) {
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
+                        circle.setImageResource(R.drawable.green_circle);
                         numBreathsEt.setEnabled(false);
                         handleSmallInhale();
                     }
@@ -135,7 +136,6 @@ public class BreathActivity extends AppCompatActivity {
                         } else {
                             handleExhale();
                         }
-                        Toast.makeText(BreathActivity.this, "" + numBreaths, Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
@@ -180,6 +180,7 @@ public class BreathActivity extends AppCompatActivity {
 
         begin.setEnabled(false);
         exhale_anm.setDuration(COMPLETE_EXHALE_DURATION);
+        circle.setImageResource(R.drawable.blue_circle);
         circle.startAnimation(exhale_anm);
     }
 
