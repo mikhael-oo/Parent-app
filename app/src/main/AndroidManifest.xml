@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParentApp">
         <activity
+            android:name=".BreathActivity"
+            android:exported="true" />
+        <activity
             android:name=".HelpScreen"
             android:exported="false" />
         <activity

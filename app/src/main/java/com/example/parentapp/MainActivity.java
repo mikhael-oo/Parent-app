@@ -84,11 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = CoinFlipMenuActivity.makeIntent(MainActivity.this);
                     startActivity(intent);
                 }
-
             }
         });
-
-
 
         Button timeoutBtn = findViewById(R.id.timeoutTimer);
         timeoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,11 +96,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         Button helpBtn = findViewById(R.id.helpButton);
         helpBtn.setOnClickListener(view -> {
             Intent intent = HelpScreen.makeIntent(MainActivity.this);
             startActivity(intent);
+        });
+
+        Button breath = findViewById(R.id.main_breath_btn);
+        breath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = BreathActivity.makeIntent(MainActivity.this);
+                startActivity(intent);
+            }
         });
     }
 

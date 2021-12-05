@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/timeoutTimer"
         android:layout_width="162dp"
-        android:layout_height="93dp"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.46" />
 
     <TextView
         android:id="@+id/mainTitle"
@@ -31,23 +31,22 @@
         android:layout_height="61dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="36dp"
+        android:background="#ED28015D"
+        android:fontFamily="serif"
         android:shadowColor="#FFFFFF"
         android:text="Welcome to the Practical Parent App!"
         android:textAlignment="center"
+        android:textColor="#FFF6D205"
         android:textSize="20sp"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@+id/editKid"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55"
-        android:textColor="#FFF6D205"
-        android:background="#ED28015D"
-        android:fontFamily="serif"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/CoinFlip"
         android:layout_width="162dp"
-        android:layout_height="93dp"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -56,41 +55,55 @@
         android:text="Coin Flip!"
         app:layout_constraintBottom_toTopOf="@+id/timeoutTimer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
-
-    <Button
-        android:id="@+id/editKid"
-        android:layout_width="162dp"
-        android:layout_height="93dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:text="Your Kids!"
-        app:layout_constraintBottom_toTopOf="@+id/CoinFlip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.859" />
 
     <Button
-        android:id="@+id/helpButton"
+        android:id="@+id/editKid"
         android:layout_width="162dp"
-        android:layout_height="93dp"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:text="Your Kids!"
+        app:layout_constraintBottom_toTopOf="@+id/CoinFlip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/main_breath_btn"
+        android:layout_width="162dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Take Breaths"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeoutTimer" />
+
+    <Button
+        android:id="@+id/helpButton"
+        android:layout_width="162dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="112dp"
         android:text="HELP"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeoutTimer" />
 
