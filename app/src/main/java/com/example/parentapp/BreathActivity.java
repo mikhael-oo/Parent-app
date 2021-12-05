@@ -76,8 +76,13 @@ public class BreathActivity extends AppCompatActivity {
         hint = findViewById(R.id.breath_help_tv);
         timer = findViewById(R.id.breath_timer_tv);
         circle = findViewById(R.id.circle_img);
+        numBreathsEt = findViewById(R.id.breath_num_et);
         inhale_anm = AnimationUtils.loadAnimation(this, R.anim.breath_inhale);
         exhale_anm = AnimationUtils.loadAnimation(this, R.anim.breath_exhale);
+
+        numBreaths = SharedPrefsConfig.getBreathPrefsSharedPrefs(this);
+        numBreathsEt.setText(Integer.toString(numBreaths));
+        Toast.makeText(BreathActivity.this, "" + numBreaths, Toast.LENGTH_SHORT).show();
 
         ActionBar ab = getSupportActionBar();
         assert ab != null;
@@ -102,7 +107,6 @@ public class BreathActivity extends AppCompatActivity {
 
 
     private void setupNumbreaths() {
-        numBreathsEt = findViewById(R.id.breath_num_et);
         if(checkBreaths()) {
             if (isFirstInhale) {
 
@@ -201,6 +205,7 @@ public class BreathActivity extends AppCompatActivity {
         }
         numBreathsEt.setText(Integer.toString(numBreaths));
         timerHandler.removeCallbacks(timerRunnable);
+        SharedPrefsConfig.setBreathPrefsSharedPrefs(this, numBreaths);
     }
 
 

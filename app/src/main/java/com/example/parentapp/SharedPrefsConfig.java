@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.util.Base64;
+import android.widget.EditText;
 
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
@@ -29,6 +30,7 @@ public class SharedPrefsConfig {
     public static final String TASK_LIST_SHAREDPREF_KEY = "Task_List_Key";
     private static final String KID_MANAGER_SHAREDPREF_KEY = "Kid_List_Key";
     private static final String KID_IMAGE_SHAREDPREF_KEY = "kid_image_key";
+    private static final String BREATH_SHAREDPREF_KEY = "breath_key";
 
 
     public static ArrayList<String[]> getCoinHistorySharedPrefsData(Context context) {
@@ -83,6 +85,14 @@ public class SharedPrefsConfig {
         Type type = new TypeToken<ArrayList<String>>()  {}.getType();
         ArrayList<String> savedImages = gson.fromJson(imageJsonString, type);
         return savedImages;
+    }
+
+
+    public static int getBreathPrefsSharedPrefs(Context context) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        int numBreaths = prefs.getInt(BREATH_SHAREDPREF_KEY, 0);
+        return numBreaths;
     }
 
     //setters
@@ -152,6 +162,15 @@ public class SharedPrefsConfig {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(SharedPrefsConfig.KID_IMAGE_SHAREDPREF_KEY, kidImageList);
+        editor.apply();
+    }
+
+
+    public static void setBreathPrefsSharedPrefs(Context context, int num) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(SharedPrefsConfig.BREATH_SHAREDPREF_KEY, num);
         editor.apply();
     }
 }
