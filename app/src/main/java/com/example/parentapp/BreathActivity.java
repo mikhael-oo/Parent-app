@@ -82,7 +82,6 @@ public class BreathActivity extends AppCompatActivity {
 
         numBreaths = SharedPrefsConfig.getBreathPrefsSharedPrefs(this);
         numBreathsEt.setText(Integer.toString(numBreaths));
-        Toast.makeText(BreathActivity.this, "" + numBreaths, Toast.LENGTH_SHORT).show();
 
         ActionBar ab = getSupportActionBar();
         assert ab != null;
@@ -109,7 +108,6 @@ public class BreathActivity extends AppCompatActivity {
     private void setupNumbreaths() {
         if(checkBreaths()) {
             if (isFirstInhale) {
-
                 numBreaths = Integer.parseInt(numBreathsEt.getText().toString());
                 isFirstInhale = false;
             }
