@@ -8,25 +8,6 @@
     android:background="@drawable/backg">
 
     <TextView
-        android:id="@+id/breath_timer_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:background="#ED28015D"
-        android:fontFamily="sans-serif"
-        android:padding="8dp"
-        android:shadowColor="#FFFFFF"
-        android:textAlignment="center"
-        android:textColor="#FFF6D205"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/breath_help_tv"
-        app:layout_constraintVertical_bias="0.017" />
-
-    <TextView
         android:id="@+id/breath_help_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +17,7 @@
         android:fontFamily="sans-serif"
         android:padding="8dp"
         android:shadowColor="#FFFFFF"
-        android:text="Hint: Press Begin to start inhaling"
+        android:text="@string/breath_hint_pre_inhale"
         android:textAlignment="center"
         android:textColor="#FFF6D205"
         android:textSize="20sp"
@@ -59,7 +40,7 @@
         android:minHeight="48dp"
         android:padding="8dp"
         android:shadowColor="#FFFFFF"
-        android:text="Let's take N Breaths"
+        android:text="@string/breath_num_breaths"
         android:textAlignment="center"
         android:textColor="#FFF6D205"
         android:textSize="20sp"
@@ -73,7 +54,7 @@
         android:layout_height="wrap_content"
         android:background="#ED28015D"
         android:padding="8dp"
-        android:text="Begin"
+        android:text="@string/breath_begin"
         android:textColor="#FFF6D205"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,7 +83,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="N :"
+        android:text="@string/breath_n"
         android:textColor="#FFF6D205"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/breath_num_et"
@@ -112,12 +93,12 @@
 
     <ImageView
         android:id="@+id/circle_img"
-        android:layout_width="80dp"
-        android:layout_height="56dp"
+        android:layout_width="66dp"
+        android:layout_height="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/breath_timer_tv"
+        app:layout_constraintTop_toBottomOf="@+id/breath_help_tv"
         app:srcCompat="@drawable/green_circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,8 +6,8 @@
     android:fillAfter="true"
     android:pivotX="50%"
     android:pivotY="50%"
-    android:fromXScale="5.0"
-    android:fromYScale="5.0"
+    android:fromXScale="4.0"
+    android:fromYScale="4.0"
     android:toXScale="1.0"
     android:toYScale="1.0"
 />

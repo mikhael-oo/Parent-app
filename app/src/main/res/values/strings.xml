@@ -53,5 +53,9 @@
     <string name="time_at_400">Timer at 400%</string>
 
     <string name="timer_interval">Timer is running at </string>
+    <string name="breath_hint_pre_inhale">Hint: Press Begin to start inhaling</string>
+    <string name="breath_num_breaths">Let\'s take N Breaths</string>
+    <string name="breath_begin">Begin</string>
+    <string name="breath_n">N :</string>
 
 </resources>

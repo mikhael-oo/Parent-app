@@ -1,7 +1,9 @@
 package com.example.parentapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -19,10 +21,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This activity adds an exhale/inhale feature by interacting with a button
+ * and having a runnable object track our inhale/exhale time
+ * then setting the state of UI accordingly
+ */
 public class BreathActivity extends AppCompatActivity {
 
     public static final int COMPLETE_EXHALE_DURATION = 10000;
     public static final int INCOMPLETE_EXHALE_DURATION = 2000;
+    public static final String INHALE_BTN = "IN";
+    public static final String INHALE_POST_TIP = "Release the button to start Exhaling";
+    public static final String INHALE_POST_BTN = "OUT";
+    public static final String EXHALE_HINT = "You can exhale";
+    public static final String EXHALE_BTN = "OUT";
+    public static final String FINISHED_HINT = "Successfully finished all breaths";
+    public static final String FINISHED_BTN = "Good Job!";
+    public static final String PRESS_IN_HINT = "Press IN to start your breath";
+    public static final String BEGIN_HINT = "Press Begin to start your breath";
+    public static final String BEGIN_BTN = "Begin";
+    public static final  String TITLE = "Taking Breaths";
+    public static final  String INVALID_NUM_BREATHS = "N must be between 1 and 10";
+    private final int MAX_N = 10;
+    private final String INHALE_HINT = "You are holding breaths .good job";
+
     private int numBreaths = 0;
     private long startTime = 0;
     private int breathTime = 0;
@@ -34,26 +56,25 @@ public class BreathActivity extends AppCompatActivity {
     private EditText numBreathsEt;
     private Button begin;
     private TextView hint;
-    private TextView timer;
     private ImageView circle;
 
     private Animation inhale_anm;
     private Animation exhale_anm;
+    private MediaPlayer inhale_music;
+    private MediaPlayer exhale_music;
 
 
 
-    private Handler timerHandler = new Handler();
-    private Runnable timerRunnable = new Runnable() {
+    private final Handler timerHandler = new Handler();
+    private final Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
             long millis = System.currentTimeMillis() - startTime;
             int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
             seconds = seconds % 60;
             breathTime = seconds;
             exhaleTime = breathTime - inhaleTime;
 
-            timer.setText(String.format("%d:%02d", minutes, seconds));
             timerHandler.postDelayed(this, 500);
 
             if(breathTime == 3) {
@@ -66,6 +87,7 @@ public class BreathActivity extends AppCompatActivity {
     };
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +96,6 @@ public class BreathActivity extends AppCompatActivity {
 
         begin = findViewById(R.id.breath_btn);
         hint = findViewById(R.id.breath_help_tv);
-        timer = findViewById(R.id.breath_timer_tv);
         circle = findViewById(R.id.circle_img);
         numBreathsEt = findViewById(R.id.breath_num_et);
         inhale_anm = AnimationUtils.loadAnimation(this, R.anim.breath_inhale);
@@ -83,10 +104,13 @@ public class BreathActivity extends AppCompatActivity {
         numBreaths = SharedPrefsConfig.getBreathPrefsSharedPrefs(this);
         numBreathsEt.setText(Integer.toString(numBreaths));
 
+        inhale_music = MediaPlayer.create(this, R.raw.inhale_music);
+        exhale_music = MediaPlayer.create(this, R.raw.exhale_music);
+
         ActionBar ab = getSupportActionBar();
         assert ab != null;
         ab.setDisplayHomeAsUpEnabled(true);
-        setTitle("Taking Breaths");
+        setTitle(TITLE);
 
         setupBreathBtn();
     }
@@ -96,12 +120,23 @@ public class BreathActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case android.R.id.home:
+                stopMusic(inhale_music);
+                stopMusic(exhale_music);
                 finish();
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        stopMusic(inhale_music);
+        stopMusic(exhale_music);
+        finish();
     }
 
 
@@ -115,6 +150,7 @@ public class BreathActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setupBreathBtn() {
         begin.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -130,6 +166,7 @@ public class BreathActivity extends AppCompatActivity {
                     else if (event.getAction() == MotionEvent.ACTION_UP) {
 
                         if (breathTime < 3) {
+                            stopMusic(inhale_music);
                             resetUI();
                         } else {
                             handleExhale();
@@ -137,7 +174,7 @@ public class BreathActivity extends AppCompatActivity {
                     }
                 }
                 else{
-                    Toast.makeText(BreathActivity.this, "Number of Breaths should be from 1 to 10", Toast.LENGTH_LONG).show();
+                    Toast.makeText(BreathActivity.this, INVALID_NUM_BREATHS, Toast.LENGTH_LONG).show();
                 }
                 return false;
             }
@@ -148,38 +185,42 @@ public class BreathActivity extends AppCompatActivity {
     private boolean checkBreaths()  {
         return !numBreathsEt.getText().toString().equalsIgnoreCase("")
                 && Integer.parseInt(numBreathsEt.getText().toString()) > 0
-                && Integer.parseInt(numBreathsEt.getText().toString()) <= 10;
+                && Integer.parseInt(numBreathsEt.getText().toString()) <= MAX_N;
     }
 
 
     private void handleSmallInhale() {
-        hint.setText("You are holding breaths .good job");
-        begin.setText("IN");
+        hint.setText(INHALE_HINT);
+        begin.setText(INHALE_BTN);
 
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);
         circle.startAnimation(inhale_anm);
+
+        playSound(inhale_music);
     }
 
 
     private void handleLargeInhale() {
 
-        hint.setText("Release the button to start Exhaling");
-        begin.setText("OUT");
+        hint.setText(INHALE_POST_TIP);
+        begin.setText(INHALE_POST_BTN);
     }
 
 
     private void handleExhale() {
 
         isFinishedInhale = true;
-        hint.setText("You can breathing out");
-        begin.setText("OUT");
+        hint.setText(EXHALE_HINT);
+        begin.setText(EXHALE_BTN);
         inhaleTime = breathTime;
 
         begin.setEnabled(false);
         exhale_anm.setDuration(COMPLETE_EXHALE_DURATION);
         circle.setImageResource(R.drawable.blue_circle);
         circle.startAnimation(exhale_anm);
+
+        playSound(exhale_music);
     }
 
 
@@ -190,14 +231,14 @@ public class BreathActivity extends AppCompatActivity {
         exhaleTime = 0;
         numBreaths--;
         if(numBreaths == 0) {
-            hint.setText("Successfully finished all breaths");
-            begin.setText("Good Job!");
+            hint.setText(FINISHED_HINT);
+            begin.setText(FINISHED_BTN);
             isMidBreaths = false;
             begin.setEnabled(false);
         }
         else{
-            hint.setText("Press In to start your breath");
-            begin.setText("IN");
+            hint.setText(PRESS_IN_HINT);
+            begin.setText(INHALE_BTN);
             isFinishedInhale = false;
             isMidBreaths = true;
             begin.setEnabled(true);
@@ -212,17 +253,43 @@ public class BreathActivity extends AppCompatActivity {
 
         timerHandler.removeCallbacks(timerRunnable);
         if(!isMidBreaths) {
-            hint.setText("Press Begin to start your breath");
-            begin.setText("Begin");
+            hint.setText(BEGIN_HINT);
+            begin.setText(BEGIN_BTN);
             numBreathsEt.setEnabled(true);
             isFirstInhale = true;
         }
         else{
-            hint.setText("Press IN to start your breath");
+            hint.setText(PRESS_IN_HINT);
         }
 
         exhale_anm.setDuration(INCOMPLETE_EXHALE_DURATION);
         circle.startAnimation(exhale_anm);
+    }
+
+
+    private void playSound(MediaPlayer music) {
+
+        if(inhale_music.isPlaying()) {
+            inhale_music.stop();
+            inhale_music = MediaPlayer.create(this, R.raw.inhale_music);
+        }
+        if(exhale_music.isPlaying()) {
+            exhale_music.stop();
+            exhale_music = MediaPlayer.create(this, R.raw.exhale_music);
+        }
+        music.start();
+    }
+
+
+    private void stopMusic(MediaPlayer music) {
+        if(music.equals(inhale_music))  {
+            inhale_music.stop();
+            inhale_music = MediaPlayer.create(this, R.raw.inhale_music);
+        }
+        else{
+            exhale_music.stop();
+            exhale_music = MediaPlayer.create(this, R.raw.exhale_music);
+        }
     }
 
 

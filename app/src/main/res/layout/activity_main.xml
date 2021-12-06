@@ -10,20 +10,20 @@
 
     <Button
         android:id="@+id/timeoutTimer"
-        android:layout_width="162dp"
-        android:layout_height="60dp"
+        android:layout_width="192dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
         android:text="Timeout Timer!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46" />
+        app:layout_constraintTop_toBottomOf="@+id/CoinFlip" />
 
     <TextView
         android:id="@+id/mainTitle"
@@ -45,67 +45,70 @@
 
     <Button
         android:id="@+id/CoinFlip"
-        android:layout_width="162dp"
-        android:layout_height="60dp"
+        android:layout_width="192dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
         android:text="Coin Flip!"
-        app:layout_constraintBottom_toTopOf="@+id/timeoutTimer"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859" />
+        app:layout_constraintTop_toBottomOf="@+id/editKid" />
 
     <Button
         android:id="@+id/editKid"
-        android:layout_width="162dp"
-        android:layout_height="60dp"
+        android:layout_width="192dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
         android:text="Your Kids!"
-        app:layout_constraintBottom_toTopOf="@+id/CoinFlip"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainTitle" />
 
     <Button
         android:id="@+id/main_breath_btn"
-        android:layout_width="162dp"
-        android:layout_height="60dp"
+        android:layout_width="192dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
         android:text="Take Breaths"
-        app:layout_constraintBottom_toTopOf="@+id/helpButton"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeoutTimer" />
 
     <Button
         android:id="@+id/helpButton"
-        android:layout_width="162dp"
-        android:layout_height="60dp"
+        android:layout_width="192dp"
+        android:layout_height="85dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="10dp"
         android:text="HELP"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeoutTimer" />
+        app:layout_constraintTop_toBottomOf="@+id/main_breath_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
