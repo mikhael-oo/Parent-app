@@ -52,4 +52,6 @@
     <string name="time_at_300">Timer at 300%</string>
     <string name="time_at_400">Timer at 400%</string>
 
+    <string name="timer_interval">Timer is running at </string>
+
 </resources>

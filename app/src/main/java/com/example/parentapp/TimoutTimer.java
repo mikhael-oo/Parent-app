@@ -1,5 +1,6 @@
 package com.example.parentapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.NotificationManager;
@@ -12,13 +13,23 @@ import android.os.CountDownTimer;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.parentapp.models.Timer;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class TimoutTimer extends AppCompatActivity {
@@ -29,6 +40,7 @@ public class TimoutTimer extends AppCompatActivity {
     private Button startPauseButton;
     private Button resetButton;
     private Button stopAlarm;
+    private TextView timerIntervalText;
 
     private CountDownTimer countDownTimer;
 
@@ -48,7 +60,9 @@ public class TimoutTimer extends AppCompatActivity {
         startPauseButton = findViewById(R.id.start_pause_button);
         resetButton = findViewById(R.id.reset_button);
         stopAlarm = findViewById(R.id.stopAlarm);
+        timerIntervalText = findViewById(R.id.timerInterval);
 
+        setUpPieChart();
 
          mp = MediaPlayer.create(getBaseContext(), R.raw.alarm);
 
@@ -77,10 +91,88 @@ public class TimoutTimer extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.time_at_25:
+                changeTimer(0.25);
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 25%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.time_at_50:
+                changeTimer(0.50);
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 50%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.time_at_75:
+                changeTimer(0.75);
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 75%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.time_at_100:
+                // there is no need to do anything
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 100%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.time_at_200:
+                changeTimer(2.0);
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 200%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.time_at_300:
+                changeTimer(3.0);
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 300%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.time_at_400:
+                changeTimer(4.0);
+                timerIntervalText.setText(getString(R.string.timer_interval) + " 400%");
+                timerIntervalText.setVisibility(View.VISIBLE);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void resetTimer() {
         timeLeftInMillis = START_TIME;
         updateCountDown();
         updateTimerInterface();
+        setUpPieChart();
+    }
+
+    // using this when the user wants to alter the time left
+    private void changeTimer(double number) {
+        if (isTimerRunning) {
+            pauseTimer();
+        }
+        timeLeftInMillis = (long)((double)timeLeftInMillis * number);
+        updateCountDown();
+        updateTimerInterface();
+        setUpPieChart();
+        Toast.makeText(this, ""+ timeLeftInMillis, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setUpPieChart() {
+        double timeLeft = timeLeftInMillis / 1000;
+        double timeSpent = (START_TIME - timeLeftInMillis) / 1000;
+        float times[] = {(float) timeLeft, (float) timeSpent};
+        String timeNames[] = {"Time Left", "Time Spent"};
+        List<PieEntry> pieEntries = new ArrayList<>();
+        for (int i = 0; i < times.length; i++) {
+            pieEntries.add(new PieEntry(times[i], timeNames[i]));
+        }
+
+        PieDataSet dataSet = new PieDataSet(pieEntries, "Time Graph");
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        PieData data = new PieData(dataSet);
+
+
+        // Getting the chart
+        PieChart chart = findViewById(R.id.timer_piechart);
+        chart.setData(data);
+
+        chart.invalidate();
     }
 
     private void startTimer() {
@@ -93,6 +185,7 @@ public class TimoutTimer extends AppCompatActivity {
                 // l represents the time left in milliseconds
                 timeLeftInMillis = l;
                 updateCountDown();
+                setUpPieChart();
             }
 
             @Override
