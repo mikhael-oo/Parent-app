@@ -1,36 +1,22 @@
 package com.example.parentapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.widget.Button;
-
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parentapp.models.Coin;
 import com.example.parentapp.models.Kid;
 import com.example.parentapp.models.KidManager;
 import com.example.parentapp.models.Task;
 import com.example.parentapp.models.TaskManager;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Base64;
 
 /**
  * This class displays the screen where you choose

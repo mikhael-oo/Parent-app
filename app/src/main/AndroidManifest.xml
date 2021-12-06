@@ -67,6 +67,9 @@
         <activity
             android:name=".AddTaskActivity"
             android:exported="true" />
+        <activity
+            android:name=".TaskHistoryList"
+            android:exported="true" />
     </application>
 
 </manifest>
