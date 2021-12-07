@@ -27,7 +27,6 @@ import com.google.gson.Gson;
  * This activity is simply an animation demonstration of the coin flip
  * after the flip is completed, name of the kid will be search against the KidManager data
  * if kidName is not in the kid Manager then the toss will not be recorded in the history of tosses
- *
  */
 public class CoinTossAct extends AppCompatActivity {
 
